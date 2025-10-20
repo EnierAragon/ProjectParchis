@@ -11,6 +11,6 @@ package cr.ac.ucr.projectparchis;
 public class ProjectParchis {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
     }
 }

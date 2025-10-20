@@ -1,0 +1,209 @@
+﻿Diagnose log at 2025-10-16T23:26:37Z
+
+AppPath: /usr/bin/git-credential-manager
+InstallDir: /usr/lib/share/git-credential-manager/
+Version: 2.6.1+cfde1f3f2d4294d4e690a9b80ed9502692c96860
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: Linux
+OSVersion: CachyOS
+Reading environment variables... OK
+ Variables:
+MKLROOT=/opt/intel/oneapi/mkl/latest
+JOURNAL_STREAM=9:20122
+NVCC_CCBIN=/usr/bin/g++
+DESKTOP_SESSION=plasma
+SHLVL=1
+XDG_CONFIG_DIRS=/home/enier/.config/kdedefaults:/etc/xdg
+LC_ADDRESS=es_CR.UTF-8
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session1
+SESSION_MANAGER=local/Cachyos-Enier:@/tmp/.ICE-unix/1344,unix/Cachyos-Enier:/tmp/.ICE-unix/1344
+LOGNAME=enier
+XDG_SEAT=seat0
+XDG_DATA_DIRS=/home/enier/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+STARSHIP_SHELL=fish
+ICEAUTHORITY=/run/user/1000/iceauth_fOxBmf
+PATH=/home/enier/.local/share/krita/ai_diffusion/server/uv:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/cuda/bin:/opt/cuda/nsight_compute:/opt/cuda/nsight_systems/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+MANAGERPIDFDID=1056
+TERM=foot
+XDG_RUNTIME_DIR=/run/user/1000
+KDE_SESSION_VERSION=6
+XDG_SESSION_CLASS=user
+GTK_RC_FILES=/etc/gtk/gtkrc:/home/enier/.gtkrc:/home/enier/.config/gtkrc
+HOME=/home/enier
+MANAGERPID=1055
+DEBUGINFOD_URLS=https://debuginfod.archlinux.org https://debuginfod.cachyos.org 
+XDG_SESSION_TYPE=wayland
+KDE_APPLICATIONS_AS_SCOPE=1
+KGLOBALACCELD_PLATFORM=org.kde.kwin
+GIT_TRACE2_PARENT_SID=c5adda40-8083-4205-a9ae-933fa90d9a65
+USER=enier
+KDE_SESSION_UID=1000
+LANG=es_CR.UTF-8
+LC_IDENTIFICATION=es_CR.UTF-8
+MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/plasma-kwin_wayland.service/memory.pressure
+GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home/enier/.gtkrc-2.0:/home/enier/.config/gtkrc-2.0
+LC_TELEPHONE=es_CR.UTF-8
+COLORTERM=truecolor
+XDG_MENU_PREFIX=plasma-
+XDG_CURRENT_DESKTOP=KDE
+QT_WAYLAND_RECONNECT=1
+MAIL=/var/spool/mail/enier
+XKB_DEFAULT_LAYOUT=us
+INVOCATION_ID=d1f591c70a4e465abcfc1ea133fffff6
+KDE_FULL_SESSION=true
+LC_NUMERIC=es_CR.UTF-8
+LC_MEASUREMENT=es_CR.UTF-8
+XDG_VTNR=2
+LC_MONETARY=es_CR.UTF-8
+SHELL=/bin/fish
+STARSHIP_SESSION_KEY=1328424127302698
+MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
+XAUTHORITY=/run/user/1000/xauth_Vnogmk
+LC_PAPER=es_CR.UTF-8
+WAYLAND_DISPLAY=wayland-0
+PWD=/home/enier/NetBeansProjects/ProjectParchis
+LC_NAME=es_CR.UTF-8
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+DISPLAY=:0
+CUDA_PATH=/opt/cuda
+PAM_KWALLET5_LOGIN=/run/user/1000/kwallet5.socket
+LC_TIME=es_CR.UTF-8
+SYSTEMD_EXEC_PID=1195
+XDG_SESSION_DESKTOP=KDE
+LANGUAGE=
+VIRTUAL_ENV_DISABLE_PROMPT=1
+XDG_SESSION_ID=2
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+MOTD_SHOWN=pam
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is '/tmp/'...
+Checking basic file I/O...
+Writing to temporary file '/tmp/ea2c4271ae93de2f67782869'... OK
+Reading from temporary file '/tmp/ea2c4271ae93de2f67782869'... OK
+Deleting temporary file '/tmp/ea2c4271ae93de2f67782869'... OK
+Testing IFileSystem instance...
+UserHomePath: /home/enier
+UserDataDirectoryPath: /home/enier/.gcm
+GetCurrentDirectory(): /mnt/da923c77-806d-41d0-85a4-a2a2723e4e8f/Media/Documentos/U/Programacion/Fundamentos2/NetBeansProjects/ProjectParchis
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com...Sending HEAD request to https://example.com... OK
+ OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:42937/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.51.0'
+Locating current repository...Git repository at '/mnt/da923c77-806d-41d0-85a4-a2a2723e4e8f/Media/Documentos/U/Programacion/Fundamentos2/NetBeansProjects/ProjectParchis/.git'
+ OK
+Listing all Git configuration... OK
+Git configuration:
+file:/home/enier/.gitconfig	filter.lfs.process=git-lfs filter-process
+file:/home/enier/.gitconfig	filter.lfs.required=true
+file:/home/enier/.gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:/home/enier/.gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:/home/enier/.gitconfig	user.name=EnierAragon
+file:/home/enier/.gitconfig	user.email=91.enier.91@gmail.com
+file:/home/enier/.gitconfig	credential.helper=cache
+file:/home/enier/.gitconfig	credential.githubaccountfiltering=false
+file:/home/enier/.gitconfig	credential.protectprotocol=false
+file:/home/enier/.gitconfig	credential.helper=
+file:/home/enier/.gitconfig	credential.helper=/usr/bin/git-credential-manager
+file:/home/enier/.gitconfig	credential.helper=manager-core
+file:/home/enier/.gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=true
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	remote.origin.url=https://github.com/EnierAragon/ProjectParchis.git
+file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+file:.git/config	branch.main.remote=origin
+file:.git/config	branch.main.merge=refs/heads/main
+file:.git/config	credential.helper=--help
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: False
+Exception:
+System.Exception: No credential store has been selected.
+
+Set the GCM_CREDENTIAL_STORE environment variable or the credential.credentialStore Git configuration setting to one of the following options:
+
+  secretservice : freedesktop.org Secret Service (requires graphical interface)
+  gpg           : GNU `pass` compatible credential storage (requires GPG and `pass`)
+  cache         : Git's in-memory credential cache
+  plaintext     : store credentials in plain-text files (UNSECURE)
+  none          : disable internal credential storage
+
+See https://aka.ms/gcm/credstores for more information.
+
+   at GitCredentialManager.CredentialStore.EnsureBackingStore()
+   at GitCredentialManager.CredentialStore.Remove(String service, String account)
+   at GitCredentialManager.Diagnostics.CredentialStoreDiagnostic.RunInternalAsync(StringBuilder log, IList`1 additionalFiles)
+   at GitCredentialManager.Diagnostics.Diagnostic.RunAsync()
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential...Deleting test credential...
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Flow type is: Auto
+Gathering MSAL token cache data... OK
+CacheDirectory: /home/enier/.local/.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: /home/enier/.local/.IdentityService/msal.cache
+KeyringCollection: 
+KeyringSchemaName: 
+KeyringSecretLabel: 
+KeyringAttribute1: (,)
+KeyringAttribute2: (,)
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+

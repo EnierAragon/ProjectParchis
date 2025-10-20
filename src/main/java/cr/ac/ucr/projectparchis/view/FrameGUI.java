@@ -4,10 +4,12 @@
  */
 package cr.ac.ucr.projectparchis.view;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author enier
  */
-public class FrameGUI {
-    
+public class FrameGUI extends JFrame {
+
 }

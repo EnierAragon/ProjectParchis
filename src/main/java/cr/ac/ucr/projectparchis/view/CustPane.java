@@ -4,10 +4,12 @@
  */
 package cr.ac.ucr.projectparchis.view;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author enier
  */
-public class CustPane {
-    
+public class CustPane extends JPanel {
+
 }
