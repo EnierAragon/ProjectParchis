@@ -8,6 +8,6 @@ package cr.ac.ucr.projectparchis.view;
  *
  * @author enier
  */
-public class PaneMenu extends CustPane{
+public class PanelMenu extends CustPanel{
     
 }
