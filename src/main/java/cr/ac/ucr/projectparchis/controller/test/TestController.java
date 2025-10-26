@@ -14,7 +14,7 @@ import cr.ac.ucr.projectparchis.view.test.GUITest;
 public class TestController {
 
     GUITest frame;
-    Box cajaT = new Box(0, 0);
+    Box cajaT = new Box(50, 250, 50, 250);
 
     public TestController() {
         frame = new GUITest();

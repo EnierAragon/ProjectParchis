@@ -68,17 +68,21 @@ public class Box {
         calcRightPoint();
     }
 
-    public Box(double cord1, double cord2) {
-        this.boxPoint1[0] = cord1;
-        this.boxPoint2[1] = cord2;
+    public Box(double cord1x, double cord1y, double cord2x, double cord2y) {
+        this.boxPoint1[0] = cord1x;
+        this.boxPoint1[1] = cord1y;
+        this.boxPoint2[0] = cord2x;
+        this.boxPoint2[1] = cord2y;
         calcMid();
         calcLeftPoint();
         calcRightPoint();
     }
 
-    public Box(double cord1, double cord2, boolean special) {
-        this.boxPoint1[0] = cord1;
-        this.boxPoint2[1] = cord2;
+    public Box(double cord1x, double cord1y, double cord2x, double cord2y, boolean special) {
+        this.boxPoint1[0] = cord1x;
+        this.boxPoint1[1] = cord1y;
+        this.boxPoint2[0] = cord2x;
+        this.boxPoint2[1] = cord2y;
         this.specialBox = special;
         calcMid();
         calcLeftPoint();
@@ -179,8 +183,10 @@ public class Box {
     }
 
     /**
-     * Metodo para conseguir la referencia de la cordenada inferior derecha del panel
-     * @return 
+     * Metodo para conseguir la referencia de la cordenada inferior derecha del
+     * panel
+     *
+     * @return
      */
     public double[] getBoxCord2() {
         return boxPoint2;
