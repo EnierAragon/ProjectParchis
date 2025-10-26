@@ -3,7 +3,7 @@
  */
 package cr.ac.ucr.projectparchis;
 
-import cr.ac.ucr.projectparchis.controller.EventController;
+import cr.ac.ucr.projectparchis.controller.test.TestController;
 
 /**
  *
@@ -12,7 +12,7 @@ import cr.ac.ucr.projectparchis.controller.EventController;
 public class ProjectParchis {
 
     public static void main(String[] args) {
-        new EventController();
+        new TestController();
     }
 
 }
