@@ -4,10 +4,12 @@
  */
 package cr.ac.ucr.projectparchis.view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author enier
  */
-public class CustButton {
+public class CustButton extends JButton{
     
 }

@@ -8,6 +8,6 @@ package cr.ac.ucr.projectparchis.view;
  *
  * @author enier
  */
-public class PaneGame {
+public class PanelGame extends CustPanel {
     
 }

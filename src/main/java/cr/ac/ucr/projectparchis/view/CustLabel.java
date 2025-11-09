@@ -4,10 +4,12 @@
  */
 package cr.ac.ucr.projectparchis.view;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author enier
  */
-public class CustLabel {
-    
+public class CustLabel extends JLabel {
+
 }
