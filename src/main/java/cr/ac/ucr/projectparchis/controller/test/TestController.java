@@ -4,21 +4,38 @@
  */
 package cr.ac.ucr.projectparchis.controller.test;
 
-import cr.ac.ucr.projectparchis.model.*;
-import cr.ac.ucr.projectparchis.view.test.GUITest;
+import cr.ac.ucr.projectparchis.view.FrameGUI;
 
 /**
+ * Test Build GUI
  *
  * @author enier
  */
 public class TestController {
 
-    GUITest frame;
-    Box cajaT = new Box(50, 250, 50, 250);
-
     public TestController() {
-        frame = new GUITest();
-        frame.setVisible(true);
+        FrameGUI frame = new FrameGUI();
+
     }
 
 }
+
+/**
+ * test cubo
+ *
+ * @author enier
+ */
+//public class TestController {
+//
+//    GUITest frame;
+//    Box cajaT = new Box(50, 50, 250, 250, 2);
+//
+//    public TestController() {
+//        frame = new GUITest();
+//
+//        frame.getPanelTest().setCords(cajaT.getBoxCord1(), cajaT.getBoxCord2());
+//
+//        frame.setVisible(true);
+//    }
+//
+//}

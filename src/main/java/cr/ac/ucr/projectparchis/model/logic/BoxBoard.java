@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cr.ac.ucr.projectparchis.model;
+package cr.ac.ucr.projectparchis.model.logic;
 
 /**
  *
@@ -10,11 +10,11 @@ package cr.ac.ucr.projectparchis.model;
  * @version 1.0
  * @since 1.0
  */
-public class Box {
+public class BoxBoard {
 
     /**
      * Cordenada de la esquina superior izquierda de la casilla Las cordenadas
-     * siguen el orden X,Y,Z.
+     * siguen el orden X,Y.
      *
      * @since 1.0
      */
@@ -22,15 +22,14 @@ public class Box {
 
     /**
      * Cordenada de la esquina inferior derecha de la casilla Las cordenadas
-     * siguen el orden X,Y,Z.
+     * siguen el orden X,Y.
      *
      * @since 1.0
      */
     private double[] boxPoint2 = new double[2];
 
     /**
-     * Cordenada de el centro de la casilla Las cordenadas siguen el orden
-     * X,Y,Z.
+     * Cordenada de el centro de la casilla Las cordenadas siguen el orden X,Y.
      *
      * @since 1.0
      */
@@ -38,7 +37,7 @@ public class Box {
 
     /**
      * Cordenada de la seccion izquieda de la casilla Las cordenadas siguen el
-     * orden X,Y,Z.
+     * orden X,Y.
      *
      * @since 1.0
      */
@@ -46,11 +45,16 @@ public class Box {
 
     /**
      * Cordenada de la seccion derecha de la casilla Las cordenadas siguen el
-     * orden X,Y,Z.
+     * orden X,Y.
      *
      * @since 1.0
      */
     private double[] rightCord = new double[2];
+
+    /**
+     * Cordenadas que representan cuatro puntos de las casas de colores
+     */
+    private double[] homeCords = new double[4];
 
     /**
      * Este Parametro determina si la casilla tiene que tener un comportamiento
@@ -60,30 +64,37 @@ public class Box {
      */
     private boolean specialBox = false;
 
-    public Box() {
-        this.boxPoint1[0] = 1;
-        this.boxPoint2[1] = 2;
+    private int id = 0;
+
+    public BoxBoard() {
+        this.boxPoint1[0] = 50;
+        this.boxPoint1[1] = 250;
+        this.boxPoint2[0] = 50;
+        this.boxPoint2[1] = 250;
+        this.id = 500;
         calcMid();
         calcLeftPoint();
         calcRightPoint();
     }
 
-    public Box(double cord1x, double cord1y, double cord2x, double cord2y) {
+    public BoxBoard(double cord1x, double cord1y, double cord2x, double cord2y, int id) {
         this.boxPoint1[0] = cord1x;
         this.boxPoint1[1] = cord1y;
         this.boxPoint2[0] = cord2x;
         this.boxPoint2[1] = cord2y;
+        this.id = id;
         calcMid();
         calcLeftPoint();
         calcRightPoint();
     }
 
-    public Box(double cord1x, double cord1y, double cord2x, double cord2y, boolean special) {
+    public BoxBoard(double cord1x, double cord1y, double cord2x, double cord2y, boolean special, int id) {
         this.boxPoint1[0] = cord1x;
         this.boxPoint1[1] = cord1y;
         this.boxPoint2[0] = cord2x;
         this.boxPoint2[1] = cord2y;
         this.specialBox = special;
+        this.id = id;
         calcMid();
         calcLeftPoint();
         calcRightPoint();
@@ -157,6 +168,12 @@ public class Box {
         }
 
         rightCord[1] = midCord[1];
+
+    }
+
+    private void calcHomeCords() {
+
+        double distY = Math.abs(midCord[1] - boxPoint1[1]);
 
     }
 
