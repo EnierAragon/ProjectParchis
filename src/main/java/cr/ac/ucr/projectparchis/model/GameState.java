@@ -9,5 +9,10 @@ package cr.ac.ucr.projectparchis.model;
  * @author enier
  */
 public class GameState {
-    
+
+    int[] playerTurn = new int[4];
+
+    public GameState() {
+    }
+
 }

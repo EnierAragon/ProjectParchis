@@ -2,12 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cr.ac.ucr.projectparchis.view;
+package cr.ac.ucr.projectparchis.view.transition;
+
+import cr.ac.ucr.projectparchis.view.cust.CustPanel;
 
 /**
  *
  * @author enier
  */
-public class AnimationUtil {
-    
+public class PanelOption extends CustPanel {
+
+    public PanelOption() {
+    }
+
 }

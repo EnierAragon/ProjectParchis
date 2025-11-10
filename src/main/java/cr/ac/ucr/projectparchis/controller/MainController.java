@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
  *
  * @author enier
  */
-public class EventController implements ActionListener {
+public class MainController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {

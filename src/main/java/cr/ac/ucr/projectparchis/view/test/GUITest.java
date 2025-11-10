@@ -20,4 +20,8 @@ public class GUITest extends JFrame {
         this.getContentPane().add(pTest);
     }
 
+    public PanelTest getPanelTest() {
+        return pTest;
+    }
+
 }
