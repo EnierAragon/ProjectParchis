@@ -35,12 +35,16 @@ public class CustPanel extends JPanel {
         initParameters(name, pref);
     }
 
+    public CustPanel(String name, Dimension pref, Dimension size) {
+        initParameters(name, pref, size);
+    }
+
     public CustPanel(String name, Dimension def, Dimension min, Dimension max, LayoutManager layoutManager) {
         initParameters(name, def, min, max, layoutManager);
     }
 
     private void initParameters() {
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc.fill = GridBagConstraints.NONE;
         this.setName("DefaultCustPanel");
         this.setLayout(new GridBagLayout());
         this.setMaximumSize(this.max);
@@ -48,7 +52,7 @@ public class CustPanel extends JPanel {
     }
 
     private void initParameters(String name) {
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc.fill = GridBagConstraints.NONE;
         this.setName(name);
         this.setLayout(new GridBagLayout());
         this.setMaximumSize(this.max);
@@ -56,7 +60,7 @@ public class CustPanel extends JPanel {
     }
 
     private void initParameters(String name, Dimension pref) {
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc.fill = GridBagConstraints.NONE;
         this.setName(name);
         this.setLayout(new GridBagLayout());
         this.setPreferredSize(pref);
@@ -64,8 +68,18 @@ public class CustPanel extends JPanel {
         this.setMinimumSize(this.min);
     }
 
+    private void initParameters(String name, Dimension pref, Dimension size) {
+        gbc.fill = GridBagConstraints.NONE;
+        this.setName(name);
+        this.setLayout(new GridBagLayout());
+        this.setPreferredSize(pref);
+        this.setSize(size);
+        this.setMaximumSize(this.max);
+        this.setMinimumSize(this.min);
+    }
+
     private void initParameters(String name, Dimension def, Dimension min, Dimension max, LayoutManager layoutManager) {
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc.fill = GridBagConstraints.NONE;
         this.setName(name);
         this.setLayout(layoutManager);
         this.setPreferredSize(def);

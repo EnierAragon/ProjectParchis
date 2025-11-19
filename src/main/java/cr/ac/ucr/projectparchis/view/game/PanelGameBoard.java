@@ -10,6 +10,7 @@ import cr.ac.ucr.projectparchis.view.cust.CustPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 /**
  *
@@ -26,7 +27,7 @@ public class PanelGameBoard extends CustPanel {
     protected CustButton btnDraw;
 
     public PanelGameBoard() {
-        super("PanelGameBoar", new Dimension(384, 720));
+        super("PanelGameBoar", new Dimension(320, 900));
         initComponets();
         confComponets();
 
@@ -35,66 +36,75 @@ public class PanelGameBoard extends CustPanel {
     }
 
     private void initComponets() {
-        lbTitleName = new CustLabel("Name");
-        lbTitleData = new CustLabel("CurrentAction");
-        lbTitleDraw = new CustLabel("DiceNumber");
-        lbIconTurn = new CustLabel("StatusIcon");
-        lbIconDraw = new CustLabel("DiceIcon");
-        btnDraw = new CustButton("btnDraw", "btnDraw", new Dimension(60, 180));
-        btnExit = new CustButton("btnExit", "btnExit", new Dimension(60, 60));
+//        lbTitleName = new CustLabel("Name", new Dimension(180, 60));
+//        lbTitleData = new CustLabel("CurrentAction", new Dimension(180, 90));
+//        lbTitleDraw = new CustLabel("DiceNumber", new Dimension(180, 60));
+//        lbIconTurn = new CustLabel("StatusIcon", new Dimension(120, 120));
+//        lbIconDraw = new CustLabel("DiceIcon", new Dimension(180, 60));
+//        btnDraw = new CustButton("btnDraw", "btnDraw", new Dimension(180, 60));
+//        btnExit = new CustButton("btnExit", "btnExit", new Dimension(60, 60));
+        
+        lbTitleName = new CustLabel("Name", new Dimension(270, 90));
+        lbTitleData = new CustLabel("CurrentAction", new Dimension(270, 135));
+        lbTitleDraw = new CustLabel("DiceNumber", new Dimension(270, 45));
+        lbIconTurn = new CustLabel("StatusIcon", new Dimension(180, 180));
+        lbIconDraw = new CustLabel("DiceIcon", new Dimension(150, 150));
+        btnDraw = new CustButton("btnDraw", "btnDraw", new Dimension(270, 90));
+        btnExit = new CustButton("btnExit", "btnExit", new Dimension(90, 90));
     }
 
     private void confComponets() {
-        this.gbc.fill = GridBagConstraints.BOTH;
-//        this.gbc.insets = new Insets(30, 150, 60, 150);
+//        this.gbc.insets = new Insets(↑, ←, ↓, →);
+//        this.gbc.insets = new Insets(0, 0, 0, 0);
 
-        this.gbc.weightx = 1;
-        this.gbc.weighty = 1;
+        this.gbc.weightx = 0;
+        this.gbc.weighty = 0;
+        this.gbc.gridx = 0;
 
         //boton salida
-        this.gbc.gridx = 5;
-        this.gbc.gridy = 1;
-        this.gbc.gridwidth = 2;
+        this.gbc.anchor = GridBagConstraints.EAST;
+
+        this.gbc.gridy = 0;
+        this.gbc.gridwidth = 6;
         this.gbc.gridheight = 2;
         this.add(btnExit, this.gbc);
 
+        this.gbc.anchor = GridBagConstraints.CENTER;
+
         //label nombre
-        this.gbc.gridx = 1;
         this.gbc.gridy = 3;
         this.gbc.gridwidth = 6;
         this.gbc.gridheight = 2;
         this.add(lbTitleName, this.gbc);
 
         //label icono de estado
-        this.gbc.gridx = 2;
+        this.gbc.insets = new Insets(20, 0, 0, 0);
         this.gbc.gridy = 7;
-        this.gbc.gridwidth = 4;
+        this.gbc.gridwidth = 6;
         this.gbc.gridheight = 4;
         this.add(lbIconTurn, this.gbc);
 
         //label accion actual
-        this.gbc.gridx = 1;
         this.gbc.gridy = 12;
         this.gbc.gridwidth = 6;
         this.gbc.gridheight = 3;
         this.add(lbTitleData, this.gbc);
 
         //label numero de dado
-        this.gbc.gridx = 1;
         this.gbc.gridy = 16;
         this.gbc.gridwidth = 6;
-        this.gbc.gridheight = 2;
+        this.gbc.gridheight = 1;
         this.add(lbTitleDraw, this.gbc);
 
         //label icono dado
-        this.gbc.gridx = 1;
+        this.gbc.insets = new Insets(0, 0, 0, 0);
         this.gbc.gridy = 18;
         this.gbc.gridwidth = 6;
         this.gbc.gridheight = 2;
         this.add(lbIconDraw, this.gbc);
 
         //boton tirada
-        this.gbc.gridx = 1;
+        this.gbc.insets = new Insets(25, 0, 0, 0);
         this.gbc.gridy = 21;
         this.gbc.gridwidth = 6;
         this.gbc.gridheight = 2;

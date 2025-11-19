@@ -25,12 +25,12 @@ public class FrameGUI extends JFrame {
     public FrameGUI() {
         initParameters();
         initComponets();
-        this.setResizable(false);
         this.getContentPane().add(panelGame, gbc);
 
         setLocationRelativeTo(null);
-        pack();
+        this.setResizable(false);
         setVisible(true);
+        pack();
     }
 
     private void initParameters() {
@@ -38,7 +38,7 @@ public class FrameGUI extends JFrame {
         this.getContentPane().setLayout(new GridBagLayout());
         this.setResizable(false);
         this.setBackground(Color.yellow);
-        this.setPreferredSize(new Dimension(1280, 720));
+        this.setPreferredSize(new Dimension(1600, 900));
         this.setMinimumSize(new Dimension(850, 480));
         this.setMaximumSize(new Dimension(2560, 1440));
     }

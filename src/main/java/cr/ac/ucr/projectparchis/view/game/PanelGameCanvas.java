@@ -21,9 +21,9 @@ public class PanelGameCanvas extends CustPanel {
     private Timer timer;
 
     public PanelGameCanvas() {
-        super("PanelGameCanvas", new Dimension(768, 768));
+        super("PanelGameCanvas", new Dimension(768, 768), new Dimension(768, 768));
         initGameLoop();
-        
+
         this.setBackground(Color.BLUE);
         this.setVisible(true);
     }
