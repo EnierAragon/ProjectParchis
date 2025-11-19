@@ -4,17 +4,10 @@
  */
 package cr.ac.ucr.projectparchis.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 /**
  *
  * @author enier
  */
-public class MainController implements ActionListener {
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    }
-
+public class ControllerGUI {
+    
 }

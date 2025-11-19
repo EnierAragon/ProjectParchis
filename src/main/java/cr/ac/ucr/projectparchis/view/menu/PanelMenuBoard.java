@@ -8,8 +8,10 @@ import cr.ac.ucr.projectparchis.view.cust.CustButton;
 import cr.ac.ucr.projectparchis.view.cust.CustLabel;
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -17,17 +19,17 @@ import java.awt.Insets;
  */
 public class PanelMenuBoard extends CustPanel {
 
-    private CustButton btnPlay;
-    private CustButton btnLore;
-    private CustButton btnHowToPlay;
-    private CustButton btnExit;
-    private CustLabel lbIcon;
+    protected CustButton btnPlay;
+    protected CustButton btnLore;
+    protected CustButton btnHowToPlay;
+    protected CustButton btnExit;
+    protected CustLabel lbIcon;
 
     public PanelMenuBoard() {
-        super("PanelMenuBoard");
+        super("PanelMenuBoard", new Dimension(384, 720));
         initComponets();
         confComponents();
-        this.setBackground(Color.red);
+        this.setBackground(Color.GREEN);
     }
 
     private void initComponets() {
@@ -35,52 +37,58 @@ public class PanelMenuBoard extends CustPanel {
         btnHowToPlay = new CustButton("btnHTP", "btnHTP");
         btnLore = new CustButton("btnLore", "btnLore");
         btnExit = new CustButton("btnExit", "btnExit");
-        lbIcon = new CustLabel();
+        lbIcon = new CustLabel("Icon", SwingConstants.CENTER);
     }
 
     private void confComponents() {
-        this.getGbc().fill = GridBagConstraints.BOTH;
-        this.getGbc().insets = new Insets(30, 150, 60, 150);
-        
+        this.gbc.fill = GridBagConstraints.BOTH;
+
         //icono superior
-        this.getGbc().gridx = 3;
-        this.getGbc().gridy = 2;
-        this.getGbc().gridwidth = 2;
-        this.getGbc().gridheight = 2;
-        this.getGbc().weightx = 0.2;
-        this.getGbc().weighty = 0.8;
-        lbIcon.setBackground(Color.CYAN);
-        this.add(lbIcon, this.getGbc());
+        this.gbc.insets = new Insets(30, 125, 60, 125);
+        
+        this.gbc.gridx = 3;
+        this.gbc.gridy = 2;
+        this.gbc.gridwidth = 2;
+        this.gbc.gridheight = 2;
+        
+        this.gbc.weightx = 0.2;
+        this.gbc.weighty = 0.8;
+        lbIcon.setBackground(Color.GRAY);
+        this.add(lbIcon, this.gbc);
 
         //botones
-        this.getGbc().insets = new Insets(0, 60, 30, 60);
-        this.getGbc().gridx = 2;
-        this.getGbc().gridwidth = 6;
-        this.getGbc().gridheight = 2;
-        this.getGbc().weightx = 0.5;
-        this.getGbc().weighty = 0.5;
+        this.gbc.insets = new Insets(0, 60, 30, 60);
+        
+        this.gbc.gridx = 2;
+        this.gbc.gridwidth = 6;
+        this.gbc.gridheight = 2;
+        
+        this.gbc.weightx = 0.5;
+        this.gbc.weighty = 0.5;
 
         //boton play
-        this.getGbc().gridy = 8;
-        this.add(btnPlay, this.getGbc());
+        this.gbc.gridy = 8;
+        this.add(btnPlay, this.gbc);
 
         //boton HTP
-        this.getGbc().gridy = 11;
-        this.add(btnHowToPlay, this.getGbc());
+        this.gbc.gridy = 11;
+        this.add(btnHowToPlay, this.gbc);
 
         //boton lore
-        this.getGbc().gridy = 14;
-        this.add(btnLore, this.getGbc());
+        this.gbc.gridy = 14;
+        this.add(btnLore, this.gbc);
 
         //boton exit
-        this.getGbc().insets = new Insets(60, 60, 30, 60);
-        this.getGbc().gridy = 19;
-        this.getGbc().gridx = 2;
-        this.getGbc().gridwidth = 6;
-        this.getGbc().gridheight = 3;
-        this.getGbc().weightx = 0.5;
-        this.getGbc().weighty = 0.5;
-        this.add(btnExit, this.getGbc());
+        this.gbc.insets = new Insets(60, 60, 30, 60);
+        
+        this.gbc.gridy = 19;
+        this.gbc.gridx = 2;
+        this.gbc.gridwidth = 6;
+        this.gbc.gridheight = 3;
+        
+        this.gbc.weightx = 0.5;
+        this.gbc.weighty = 0.5;
+        this.add(btnExit, this.gbc);
 
     }
 

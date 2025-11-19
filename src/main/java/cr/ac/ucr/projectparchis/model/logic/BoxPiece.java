@@ -10,7 +10,7 @@ package cr.ac.ucr.projectparchis.model.logic;
  * @version 1.0
  * @since 1.0
  */
-public class BoxBoard {
+public class BoxPiece {
 
     /**
      * Cordenada de la esquina superior izquierda de la casilla Las cordenadas
@@ -66,7 +66,7 @@ public class BoxBoard {
 
     private int id = 0;
 
-    public BoxBoard() {
+    public BoxPiece() {
         this.boxPoint1[0] = 50;
         this.boxPoint1[1] = 250;
         this.boxPoint2[0] = 50;
@@ -77,7 +77,7 @@ public class BoxBoard {
         calcRightPoint();
     }
 
-    public BoxBoard(double cord1x, double cord1y, double cord2x, double cord2y, int id) {
+    public BoxPiece(double cord1x, double cord1y, double cord2x, double cord2y, int id) {
         this.boxPoint1[0] = cord1x;
         this.boxPoint1[1] = cord1y;
         this.boxPoint2[0] = cord2x;
@@ -88,7 +88,7 @@ public class BoxBoard {
         calcRightPoint();
     }
 
-    public BoxBoard(double cord1x, double cord1y, double cord2x, double cord2y, boolean special, int id) {
+    public BoxPiece(double cord1x, double cord1y, double cord2x, double cord2y, boolean special, int id) {
         this.boxPoint1[0] = cord1x;
         this.boxPoint1[1] = cord1y;
         this.boxPoint2[0] = cord2x;

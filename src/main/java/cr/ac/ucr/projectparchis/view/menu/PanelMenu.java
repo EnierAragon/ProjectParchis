@@ -7,6 +7,7 @@ package cr.ac.ucr.projectparchis.view.menu;
 import cr.ac.ucr.projectparchis.view.cust.CustLabel;
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
 import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.SwingConstants;
 
 /**
@@ -40,35 +41,35 @@ public class PanelMenu extends CustPanel {
     CustLabel lbIlustration;
 
     public PanelMenu() {
-        super("PanelMenu");
+        super("PanelMenu", new Dimension(1280, 720));
         initComponets();
         settingComponets();
         confComponets();
-        this.setBackground(Color.GREEN);
+        this.setBackground(Color.yellow);
         this.setVisible(true);
     }
 
     private void initComponets() {
         board = new PanelMenuBoard();
-        lbIlustration = new CustLabel("lbIlustration", SwingConstants.CENTER);
+        lbIlustration = new CustLabel("lbIlustration", new Dimension(896, 720), SwingConstants.CENTER);
     }
 
     private void settingComponets() {
-        lbIlustration.setBackground(Color.ORANGE);
+        lbIlustration.setBackground(Color.BLUE);
 
     }
 
     private void confComponets() {
-        this.getGbc().gridy = 0;
-        this.getGbc().weighty = 1;
+        this.gbc.gridy = 0;
+        this.gbc.weighty = 1;
 
-        this.getGbc().gridx = 0;
-        this.getGbc().weightx = 0.8;
-        this.add(lbIlustration, this.getGbc());
+        this.gbc.gridx = 0;
+        this.gbc.weightx = 0.7;
+        this.add(lbIlustration, this.gbc);
 
-        this.getGbc().gridx = 1;
-        this.getGbc().weightx = 0.2;
-        this.add(board, this.getGbc());
+        this.gbc.gridx = 1;
+        this.gbc.weightx = 0.3;
+        this.add(board, this.gbc);
     }
 
 }

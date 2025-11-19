@@ -5,46 +5,54 @@
 package cr.ac.ucr.projectparchis.view.game;
 
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import javax.swing.Timer;
 
 /**
  *
  * @author enier
  */
-public class PanelCanvas extends CustPanel implements Runnable {
+public class PanelGameCanvas extends CustPanel {
 
-    private Thread gameLoop;
     private boolean running = false;
+    private Timer timer;
 
-    public PanelCanvas() {
+    public PanelGameCanvas() {
+        super("PanelGameCanvas", new Dimension(768, 768));
+        initGameLoop();
+        
+        this.setBackground(Color.BLUE);
+        this.setVisible(true);
+    }
+
+    private void initGameLoop() {
+        // 16 ms ≈ 60 FPS
+        int delay = 16;
+        timer = new Timer(delay, (var e) -> {
+            if (running) {
+                updateSprites();
+                repaint();
+            }
+        });
     }
 
     public void start() {
-        if (gameLoop == null || !running) {
+        if (!running) {
             running = true;
-            gameLoop = new Thread(this);
-            gameLoop.start();
+            timer.start();
         }
     }
 
-    @Override
-    public void run() {
-
-        while (running) {
-            updateSprites();
-            repaint();
-            try {
-                Thread.sleep(16); // ~60 FPS
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
-
+    public void stop() {
+        running = false;
+        timer.stop();
     }
 
     private void updateSprites() {
-
+        // Aquí se actualizan posiciones, animaciones, etc.
     }
 
     @Override

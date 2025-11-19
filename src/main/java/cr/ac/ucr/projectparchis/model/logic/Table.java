@@ -10,12 +10,12 @@ import java.util.ArrayList;
  *
  * @author enier
  */
-public class Board {
+public class Table {
 
-    ArrayList<BoxBoard> boxSpaces;
-    ArrayList<BoxBoard> boxHomes;
+    ArrayList<BoxPiece> boxSpaces;
+    ArrayList<BoxPiece> boxHomes;
 
-    public Board() {
+    public Table() {
     }
 
     /**

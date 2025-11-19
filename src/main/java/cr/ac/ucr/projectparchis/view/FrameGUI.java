@@ -4,6 +4,7 @@
  */
 package cr.ac.ucr.projectparchis.view;
 
+import cr.ac.ucr.projectparchis.view.game.PanelGame;
 import cr.ac.ucr.projectparchis.view.menu.PanelMenu;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,11 +20,13 @@ public class FrameGUI extends JFrame {
 
     GridBagConstraints gbc = new GridBagConstraints();
     PanelMenu panelMenu;
+    PanelGame panelGame;
 
     public FrameGUI() {
         initParameters();
         initComponets();
-        this.getContentPane().add(panelMenu, gbc);
+        this.setResizable(false);
+        this.getContentPane().add(panelGame, gbc);
 
         setLocationRelativeTo(null);
         pack();
@@ -42,6 +45,7 @@ public class FrameGUI extends JFrame {
 
     private void initComponets() {
         panelMenu = new PanelMenu();
+        panelGame = new PanelGame();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 0;
         gbc.gridy = 0;

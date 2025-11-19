@@ -10,15 +10,15 @@ import java.awt.Image;
  *
  * @author enier
  */
-public class BoardSprite extends GraphicsSprite {
+public class TableSprite extends GraphicsSprite {
 
-    public BoardSprite(Image texture, int x, int y) {
-        super(texture, x, y);
+    public TableSprite(Image texture, int x, int y, int id) {
+        super(texture, x, y, id, false);
     }
 
     @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(Image texture) {
+        this.sprite = utilConvertToBufferedImage(texture);
     }
 
 }

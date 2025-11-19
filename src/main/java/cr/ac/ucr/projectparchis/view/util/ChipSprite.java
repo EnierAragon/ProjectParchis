@@ -12,13 +12,13 @@ import java.awt.Image;
  */
 public class ChipSprite extends GraphicsSprite {
 
-    public ChipSprite(Image texture, int x, int y) {
-        super(texture, x, y);
+    public ChipSprite(Image texture, int x, int y, int id) {
+        super(texture, x, y, id, true);
     }
 
     @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(Image texture) {
+        this.sprite = utilConvertToBufferedImage(texture);
     }
 
 }
