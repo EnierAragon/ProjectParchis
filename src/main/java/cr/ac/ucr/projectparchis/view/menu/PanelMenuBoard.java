@@ -11,7 +11,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.SwingConstants;
 
 /**
  *
@@ -26,45 +25,39 @@ public class PanelMenuBoard extends CustPanel {
     protected CustLabel lbIcon;
 
     public PanelMenuBoard() {
-        super("PanelMenuBoard", new Dimension(384, 720));
+        super("PanelMenuBoard", new Dimension(320, 900));
         initComponets();
         confComponents();
         this.setBackground(Color.GREEN);
     }
 
     private void initComponets() {
-        btnPlay = new CustButton("btnPlay", "btnPlay");
-        btnHowToPlay = new CustButton("btnHTP", "btnHTP");
-        btnLore = new CustButton("btnLore", "btnLore");
-        btnExit = new CustButton("btnExit", "btnExit");
-        lbIcon = new CustLabel("Icon", SwingConstants.CENTER);
+        lbIcon = new CustLabel("Icon", new Dimension(180, 180));
+        btnPlay = new CustButton("btnPlay", "btnPlay", new Dimension(270, 90));
+        btnHowToPlay = new CustButton("btnHTP", "btnHTP", new Dimension(270, 90));
+        btnLore = new CustButton("btnLore", "btnLore", new Dimension(270, 90));
+        btnExit = new CustButton("btnExit", "btnExit", new Dimension(270, 135));
     }
 
     private void confComponents() {
-        this.gbc.fill = GridBagConstraints.BOTH;
+//        this.gbc.insets = new Insets(↑, ←, ↓, →);
+//        this.gbc.insets = new Insets(0, 0, 0, 0);
+        this.gbc.anchor = GridBagConstraints.CENTER;
+        this.gbc.weightx = 0;
+        this.gbc.weighty = 0;
+        this.gbc.gridx = 0;
+        this.gbc.gridwidth = 6;
 
         //icono superior
-        this.gbc.insets = new Insets(30, 125, 60, 125);
-        
-        this.gbc.gridx = 3;
+        this.gbc.insets = new Insets(30, 0, 60, 0);
         this.gbc.gridy = 2;
-        this.gbc.gridwidth = 2;
         this.gbc.gridheight = 2;
-        
-        this.gbc.weightx = 0.2;
-        this.gbc.weighty = 0.8;
-        lbIcon.setBackground(Color.GRAY);
+
         this.add(lbIcon, this.gbc);
 
         //botones
-        this.gbc.insets = new Insets(0, 60, 30, 60);
-        
-        this.gbc.gridx = 2;
-        this.gbc.gridwidth = 6;
+        this.gbc.insets = new Insets(30, 0, 0, 0);
         this.gbc.gridheight = 2;
-        
-        this.gbc.weightx = 0.5;
-        this.gbc.weighty = 0.5;
 
         //boton play
         this.gbc.gridy = 8;
@@ -79,15 +72,11 @@ public class PanelMenuBoard extends CustPanel {
         this.add(btnLore, this.gbc);
 
         //boton exit
-        this.gbc.insets = new Insets(60, 60, 30, 60);
-        
+        this.gbc.insets = new Insets(90, 0, 0, 0);
         this.gbc.gridy = 19;
         this.gbc.gridx = 2;
-        this.gbc.gridwidth = 6;
         this.gbc.gridheight = 3;
-        
-        this.gbc.weightx = 0.5;
-        this.gbc.weighty = 0.5;
+
         this.add(btnExit, this.gbc);
 
     }

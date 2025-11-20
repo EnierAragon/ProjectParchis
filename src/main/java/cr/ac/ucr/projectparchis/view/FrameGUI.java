@@ -25,7 +25,7 @@ public class FrameGUI extends JFrame {
     public FrameGUI() {
         initParameters();
         initComponets();
-        this.getContentPane().add(panelGame, gbc);
+        this.getContentPane().add(panelMenu, gbc);
 
         setLocationRelativeTo(null);
         this.setResizable(false);

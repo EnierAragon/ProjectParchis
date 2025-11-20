@@ -60,12 +60,12 @@ public class PanelGameBoard extends CustPanel {
         this.gbc.weightx = 0;
         this.gbc.weighty = 0;
         this.gbc.gridx = 0;
+        this.gbc.gridwidth = 6;
 
         //boton salida
         this.gbc.anchor = GridBagConstraints.EAST;
 
         this.gbc.gridy = 0;
-        this.gbc.gridwidth = 6;
         this.gbc.gridheight = 2;
         this.add(btnExit, this.gbc);
 
@@ -73,33 +73,28 @@ public class PanelGameBoard extends CustPanel {
 
         //label nombre
         this.gbc.gridy = 3;
-        this.gbc.gridwidth = 6;
         this.gbc.gridheight = 2;
         this.add(lbTitleName, this.gbc);
 
         //label icono de estado
         this.gbc.insets = new Insets(20, 0, 0, 0);
         this.gbc.gridy = 7;
-        this.gbc.gridwidth = 6;
         this.gbc.gridheight = 4;
         this.add(lbIconTurn, this.gbc);
 
         //label accion actual
         this.gbc.gridy = 12;
-        this.gbc.gridwidth = 6;
         this.gbc.gridheight = 3;
         this.add(lbTitleData, this.gbc);
 
         //label numero de dado
         this.gbc.gridy = 16;
-        this.gbc.gridwidth = 6;
         this.gbc.gridheight = 1;
         this.add(lbTitleDraw, this.gbc);
 
         //label icono dado
         this.gbc.insets = new Insets(0, 0, 0, 0);
         this.gbc.gridy = 18;
-        this.gbc.gridwidth = 6;
         this.gbc.gridheight = 2;
         this.add(lbIconDraw, this.gbc);
 

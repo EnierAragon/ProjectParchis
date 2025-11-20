@@ -41,7 +41,7 @@ public class PanelMenu extends CustPanel {
     CustLabel lbIlustration;
 
     public PanelMenu() {
-        super("PanelMenu", new Dimension(1280, 720));
+        super("PanelMenu", new Dimension(1600, 900));
         initComponets();
         settingComponets();
         confComponets();
@@ -51,7 +51,7 @@ public class PanelMenu extends CustPanel {
 
     private void initComponets() {
         board = new PanelMenuBoard();
-        lbIlustration = new CustLabel("lbIlustration", new Dimension(896, 720), SwingConstants.CENTER);
+        lbIlustration = new CustLabel("lbIlustration", new Dimension(1280, 900), SwingConstants.CENTER);
     }
 
     private void settingComponets() {
