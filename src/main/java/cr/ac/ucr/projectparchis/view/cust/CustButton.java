@@ -22,21 +22,21 @@ public class CustButton extends JButton {
         this.setVisible(true);
     }
 
-    public CustButton(String name, String actionCommand) {
-        this.setName(name);
+    public CustButton(String text, String actionCommand) {
+        this.setText(text);
         this.setActionCommand(actionCommand);
         this.setVisible(true);
     }
 
-    public CustButton(String name, String actionCommand, Dimension pref) {
-        this.setName(name);
+    public CustButton(String text, String actionCommand, Dimension pref) {
+        this.setText(text);
         this.setActionCommand(actionCommand);
         this.setPreferredSize(pref);
         this.setVisible(true);
     }
 
-    public CustButton(String name, String actionCommand, Dimension pref, Dimension size) {
-        this.setName(name);
+    public CustButton(String text, String actionCommand, Dimension pref, Dimension size) {
+        this.setText(text);
         this.setActionCommand(actionCommand);
         this.setPreferredSize(pref);
         this.setSize(size);

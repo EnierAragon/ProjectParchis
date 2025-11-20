@@ -20,6 +20,7 @@ public class CustLabel extends JLabel {
     Dimension max = new Dimension(400, 150);
 
     public CustLabel() {
+        this.setHorizontalAlignment(CENTER);
         this.setBackground(Color.GRAY);
         this.setOpaque(true);
     }
@@ -39,12 +40,14 @@ public class CustLabel extends JLabel {
 
     public CustLabel(String text) {
         super(text);
+        this.setHorizontalAlignment(CENTER);
         this.setBackground(Color.GRAY);
         this.setOpaque(true);
     }
 
     public CustLabel(String text, Dimension pref) {
         super(text);
+        this.setHorizontalAlignment(CENTER);
         this.setMinimumSize(min);
         this.setPreferredSize(pref);
         this.setMaximumSize(max);

@@ -33,10 +33,10 @@ public class PanelMenuBoard extends CustPanel {
 
     private void initComponets() {
         lbIcon = new CustLabel("Icon", new Dimension(180, 180));
-        btnPlay = new CustButton("btnPlay", "btnPlay", new Dimension(270, 90));
-        btnHowToPlay = new CustButton("btnHTP", "btnHTP", new Dimension(270, 90));
-        btnLore = new CustButton("btnLore", "btnLore", new Dimension(270, 90));
-        btnExit = new CustButton("btnExit", "btnExit", new Dimension(270, 135));
+        btnPlay = new CustButton("Jugar", "btnPlay", new Dimension(270, 90));
+        btnHowToPlay = new CustButton("Acerca de", "btnHTP", new Dimension(270, 90));
+        btnLore = new CustButton("Lore", "btnLore", new Dimension(270, 90));
+        btnExit = new CustButton("Salir", "btnExit", new Dimension(270, 135));
     }
 
     private void confComponents() {

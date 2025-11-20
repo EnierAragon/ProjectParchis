@@ -12,7 +12,7 @@ import cr.ac.ucr.projectparchis.controller.test.TestController;
 public class ProjectParchis {
 
     public static void main(String[] args) {
-        new TestController();
+        TestController test = new TestController();
     }
 
 }

@@ -21,7 +21,6 @@ public class CustPanel extends JPanel {
     protected Dimension def = new Dimension(1280, 720);
 
     protected GridBagConstraints gbc = new GridBagConstraints();
-    protected GridBagConstraints gbcVoid = new GridBagConstraints();
 
     public CustPanel() {
         initParameters();
@@ -92,8 +91,7 @@ public class CustPanel extends JPanel {
     }
 
     public void cleanGbc() {
-        gbc = gbcVoid;
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc = new GridBagConstraints();
     }
 
 }
