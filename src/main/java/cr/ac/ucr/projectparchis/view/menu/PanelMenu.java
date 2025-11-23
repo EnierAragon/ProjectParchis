@@ -8,6 +8,7 @@ import cr.ac.ucr.projectparchis.view.cust.CustLabel;
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import javax.swing.SwingConstants;
 
 /**
@@ -70,6 +71,14 @@ public class PanelMenu extends CustPanel {
         this.gbc.gridx = 1;
         this.gbc.weightx = 0.3;
         this.add(board, this.gbc);
+    }
+
+    public void heyListenMenus(ActionListener a) {
+        board.btnPlay.addActionListener(a);
+        board.btnExit.addActionListener(a);
+        
+        board.btnLore.addActionListener(a);
+        board.btnHowToPlay.addActionListener(a);
     }
 
 }

@@ -4,9 +4,8 @@
  */
 package cr.ac.ucr.projectparchis.view;
 
-import cr.ac.ucr.projectparchis.view.game.PanelGame;
+import cr.ac.ucr.projectparchis.view.cust.CustPanel;
 import cr.ac.ucr.projectparchis.view.menu.PanelMenu;
-import cr.ac.ucr.projectparchis.view.options.PanelOption;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -26,13 +25,28 @@ public class FrameGUI extends JFrame {
 
     GridBagConstraints gbc = new GridBagConstraints();
     PanelMenu panelMenu;
-    PanelGame panelGame;
-    PanelOption panelOption;
 
     public FrameGUI() {
         super();
         initParameters();
         initComponets();
+        confComponets();
+
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+//        this.setVisible(true);
+        this.pack();
+
+        laterInit();
+
+        //pruebas
+//        pop(panelOption);
+    }
+
+    public FrameGUI(PanelMenu panel) {
+        super();
+        initParameters();
+        initComponets(panel);
         confComponets();
 
         setLocationRelativeTo(null);
@@ -58,18 +72,20 @@ public class FrameGUI extends JFrame {
 
     private void initComponets() {
         panelMenu = new PanelMenu();
-        panelGame = new PanelGame();
-        panelOption = new PanelOption();
+    }
+
+    private void initComponets(PanelMenu panel) {
+        panelMenu = panel;
     }
 
     private void confComponets() {
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1;
-        gbc.weighty = 1;
+        this.gbc.fill = GridBagConstraints.BOTH;
+        this.gbc.gridx = 0;
+        this.gbc.gridy = 0;
+        this.gbc.weightx = 1;
+        this.gbc.weighty = 1;
 
-        this.getContentPane().add(panelMenu, gbc);
+        this.getContentPane().add(panelMenu, this.gbc);
 
     }
 
@@ -79,6 +95,17 @@ public class FrameGUI extends JFrame {
         popFrame.setLocationRelativeTo(this);
         popFrame.setSize(800, 400);
 
+    }
+
+    public void panelChange(CustPanel panel) {
+        this.gbc.fill = GridBagConstraints.BOTH;
+        this.gbc.gridx = 0;
+        this.gbc.gridy = 0;
+        this.gbc.weightx = 1;
+        this.gbc.weighty = 1;
+        this.getContentPane().add(panel, this.gbc);
+        this.revalidate();
+        this.repaint();
     }
 
     public JPanel pop(JPanel panel) {

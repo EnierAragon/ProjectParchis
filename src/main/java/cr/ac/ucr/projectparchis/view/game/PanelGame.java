@@ -9,6 +9,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 /**
  * Este panel es el lugar donde se compone la pantalla de juego incluye un panel
@@ -61,6 +64,22 @@ public class PanelGame extends CustPanel {
         this.gbc.gridx = 1;
         this.gbc.weightx = 1;
         this.add(board, gbc);
+    }
+
+    public void heyListenMenus(ActionListener a) {
+        board.btnSurrender.addActionListener(a);
+    }
+
+    public void heyListenActions(ActionListener a) {
+        board.btnDraw.addActionListener(a);
+    }
+
+    public void heyListenMouse(MouseListener a) {
+        canvas.addMouseListener(a);
+    }
+
+    public void heyListenMotionMouse(MouseMotionListener a) {
+        canvas.addMouseMotionListener(a);
     }
 
 }

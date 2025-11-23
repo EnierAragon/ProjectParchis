@@ -23,7 +23,7 @@ public class PanelGameBoard extends CustPanel {
     protected CustLabel lbTitleDraw;
     protected CustLabel lbIconTurn;
     protected CustLabel lbIconDraw;
-    protected CustButton btnExit;
+    protected CustButton btnSurrender;
     protected CustButton btnDraw;
 
     public PanelGameBoard() {
@@ -42,15 +42,15 @@ public class PanelGameBoard extends CustPanel {
 //        lbIconTurn = new CustLabel("StatusIcon", new Dimension(120, 120));
 //        lbIconDraw = new CustLabel("DiceIcon", new Dimension(180, 60));
 //        btnDraw = new CustButton("btnDraw", "btnDraw", new Dimension(180, 60));
-//        btnExit = new CustButton("btnExit", "btnExit", new Dimension(60, 60));
-        
+//        btnSurrender = new CustButton("btnSurrender", "btnSurrender", new Dimension(60, 60));
+
         lbTitleName = new CustLabel("Name", new Dimension(270, 90));
         lbTitleData = new CustLabel("CurrentAction", new Dimension(270, 135));
         lbTitleDraw = new CustLabel("DiceNumber", new Dimension(270, 45));
         lbIconTurn = new CustLabel("StatusIcon", new Dimension(180, 180));
         lbIconDraw = new CustLabel("DiceIcon", new Dimension(150, 150));
-        btnDraw = new CustButton("btnDraw", "btnDraw", new Dimension(270, 90));
-        btnExit = new CustButton("btnExit", "btnExit", new Dimension(90, 90));
+        btnDraw = new CustButton("Tirar", "btnDraw", new Dimension(270, 90));
+        btnSurrender = new CustButton("Rendirse", "btnSurrender", new Dimension(90, 90));
     }
 
     private void confComponets() {
@@ -67,7 +67,7 @@ public class PanelGameBoard extends CustPanel {
 
         this.gbc.gridy = 0;
         this.gbc.gridheight = 2;
-        this.add(btnExit, this.gbc);
+        this.add(btnSurrender, this.gbc);
 
         this.gbc.anchor = GridBagConstraints.CENTER;
 
