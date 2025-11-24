@@ -53,8 +53,29 @@ public class BoxPiece {
 
     /**
      * Cordenadas que representan cuatro puntos de las casas de colores
+     *
+     * Superior izquierda x[0], y[1]
+     *
+     * Superior derecha x[2], y[3]
+     *
+     * Inferior izquierda x[4], y[5]
+     *
+     * Inferior derecha x[6], y[7]
      */
-    private double[] homeCords = new double[4];
+    private double[] homeCords = new double[8];
+
+    /**
+     * Blanco: 0
+     *
+     * Negro: 1
+     *
+     * Azul: 2
+     *
+     * Verde: 3
+     */
+    public final String[] ocupedType = new String[4];
+
+    private String currentType = "None";
 
     /**
      * Este Parametro determina si la casilla tiene que tener un comportamiento
@@ -63,6 +84,18 @@ public class BoxPiece {
      * @since 1.0
      */
     private boolean specialBox = false;
+
+    /**
+     * Determina si hay una ficha aqui, Solo se usa en casillas de paso, no para
+     * casas ni la meta
+     */
+    private boolean ocuped = false;
+
+    /**
+     * Determina si hay dos ficha aqui, Solo se usa en casillas de paso, no para
+     * casas ni la meta
+     */
+    private boolean dobleOcuped = false;
 
     private int id = 0;
 
@@ -75,6 +108,8 @@ public class BoxPiece {
         calcMid();
         calcLeftPoint();
         calcRightPoint();
+        calcHomeCords();
+        initComponets();
     }
 
     public BoxPiece(double cord1x, double cord1y, double cord2x, double cord2y, int id) {
@@ -86,6 +121,8 @@ public class BoxPiece {
         calcMid();
         calcLeftPoint();
         calcRightPoint();
+        calcHomeCords();
+        initComponets();
     }
 
     public BoxPiece(double cord1x, double cord1y, double cord2x, double cord2y, boolean special, int id) {
@@ -98,6 +135,15 @@ public class BoxPiece {
         calcMid();
         calcLeftPoint();
         calcRightPoint();
+        calcHomeCords();
+        initComponets();
+    }
+
+    private void initComponets() {
+        ocupedType[0] = "Blanco";
+        ocupedType[1] = "Negro";
+        ocupedType[2] = "Azul";
+        ocupedType[3] = "Verde";
     }
 
     /**
@@ -175,6 +221,22 @@ public class BoxPiece {
 
         double distY = Math.abs(midCord[1] - boxPoint1[1]);
 
+        //superior izquierda
+        homeCords[0] = leftCord[0];
+        homeCords[1] = midCord[1] - distY / 2;
+
+        //superior derecha
+        homeCords[2] = rightCord[0];
+        homeCords[3] = midCord[1] - distY / 2;
+
+        //inferior izquierda
+        homeCords[4] = leftCord[0];
+        homeCords[5] = midCord[1] + distY / 2;
+
+        //inferior derecha
+        homeCords[6] = rightCord[0];
+        homeCords[7] = midCord[1] + distY / 2;
+
     }
 
     /**
@@ -189,17 +251,6 @@ public class BoxPiece {
     }
 
     /**
-     * Establece la cordenada superior izquierda **Este metodo es solo para
-     * pruebas**
-     *
-     * @param bCord1 referencia que copiara {@code boxPoint1}
-     * @see boxPoint1
-     */
-    public void setBoxCord1(double[] bCord1) {
-        this.boxPoint1 = bCord1;
-    }
-
-    /**
      * Metodo para conseguir la referencia de la cordenada inferior derecha del
      * panel
      *
@@ -207,10 +258,6 @@ public class BoxPiece {
      */
     public double[] getBoxCord2() {
         return boxPoint2;
-    }
-
-    public void setBoxCord2(double[] bCord2) {
-        this.boxPoint2 = bCord2;
     }
 
     public double[] getMidCord() {
@@ -223,6 +270,30 @@ public class BoxPiece {
 
     public double[] getGrubCord2() {
         return rightCord;
+    }
+
+    public boolean isSpecialBox() {
+        return specialBox;
+    }
+
+    public boolean isOcuped() {
+        return ocuped;
+    }
+
+    public boolean isDobleOcuped() {
+        return dobleOcuped;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCurrentType() {
+        return currentType;
+    }
+
+    public double[] getHomeCords() {
+        return homeCords;
     }
 
 }
