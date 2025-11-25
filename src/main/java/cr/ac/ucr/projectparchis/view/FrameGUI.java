@@ -6,13 +6,14 @@ package cr.ac.ucr.projectparchis.view;
 
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
 import cr.ac.ucr.projectparchis.view.menu.PanelMenu;
+import cr.ac.ucr.projectparchis.view.options.PanelMSG;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -21,9 +22,12 @@ import javax.swing.JPanel;
  */
 public class FrameGUI extends JFrame {
 
-    JDialog popFrame;
-
     GridBagConstraints gbc = new GridBagConstraints();
+
+    JDialog popFrameUtil;
+    JDialog popFrameMSG;
+
+    PanelMSG panelMSG = new PanelMSG();
     PanelMenu panelMenu;
 
     public FrameGUI() {
@@ -90,10 +94,17 @@ public class FrameGUI extends JFrame {
     }
 
     private void laterInit() {
-        popFrame = new JDialog(this, "", true);
-        popFrame.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
-        popFrame.setLocationRelativeTo(this);
-        popFrame.setSize(800, 400);
+        popFrameUtil = new JDialog(this, "", true);
+        popFrameUtil.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        popFrameUtil.setAlwaysOnTop(true);
+        popFrameUtil.setLocationRelativeTo(this);
+        popFrameUtil.setSize(800, 400);
+
+        popFrameMSG = new JDialog(this, "", true);
+        popFrameMSG.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        popFrameMSG.setAlwaysOnTop(true);
+        popFrameMSG.setLocationRelativeTo(this);
+        popFrameMSG.setSize(800, 400);
 
     }
 
@@ -109,16 +120,33 @@ public class FrameGUI extends JFrame {
     }
 
     public JPanel pop(JPanel panel) {
-        popFrame.getContentPane().removeAll();
-        popFrame.add(panel);
-        popFrame.revalidate();
-        popFrame.repaint();
-        popFrame.setVisible(true);
+        popFrameUtil.getContentPane().removeAll();
+        popFrameUtil.add(panel);
+        popFrameUtil.revalidate();
+        popFrameUtil.repaint();
+        popFrameUtil.setVisible(true);
         return panel;
     }
 
+    public void popClose() {
+        popFrameUtil.setVisible(false);
+    }
+
     public void msg(String text) {
-        JOptionPane.showMessageDialog(this, text);
+        panelMSG.setText(text);
+        popFrameMSG.getContentPane().removeAll();
+        popFrameMSG.add(panelMSG);
+        popFrameMSG.revalidate();
+        popFrameMSG.repaint();
+        popFrameMSG.setVisible(true);
+    }
+
+    public void msgClose() {
+        popFrameMSG.setVisible(false);
+    }
+
+    public void heyListenMenus(ActionListener a) {
+        panelMSG.heyListenMenus(a);
     }
 
 }

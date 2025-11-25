@@ -6,11 +6,14 @@ package cr.ac.ucr.projectparchis.view.game;
 
 import cr.ac.ucr.projectparchis.view.cust.CustButton;
 import cr.ac.ucr.projectparchis.view.cust.CustLabel;
+import cr.ac.ucr.projectparchis.view.cust.CustPalette;
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
-import java.awt.Color;
+import cr.ac.ucr.projectparchis.view.resources.textures.TextureLoader;
+import cr.ac.ucr.projectparchis.view.resources.textures.Textures;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -29,21 +32,14 @@ public class PanelGameBoard extends CustPanel {
     public PanelGameBoard() {
         super("PanelGameBoar", new Dimension(320, 900));
         initComponets();
+        initTextures();
         confComponets();
 
-        this.setBackground(Color.GREEN);
+        this.setBackground(CustPalette.DARK_GRAY);
         this.setVisible(true);
     }
 
     private void initComponets() {
-//        lbTitleName = new CustLabel("Name", new Dimension(180, 60));
-//        lbTitleData = new CustLabel("CurrentAction", new Dimension(180, 90));
-//        lbTitleDraw = new CustLabel("DiceNumber", new Dimension(180, 60));
-//        lbIconTurn = new CustLabel("StatusIcon", new Dimension(120, 120));
-//        lbIconDraw = new CustLabel("DiceIcon", new Dimension(180, 60));
-//        btnDraw = new CustButton("btnDraw", "btnDraw", new Dimension(180, 60));
-//        btnSurrender = new CustButton("btnSurrender", "btnSurrender", new Dimension(60, 60));
-
         lbTitleName = new CustLabel("Name", new Dimension(270, 90));
         lbTitleData = new CustLabel("CurrentAction", new Dimension(270, 135));
         lbTitleDraw = new CustLabel("DiceNumber", new Dimension(270, 45));
@@ -51,6 +47,24 @@ public class PanelGameBoard extends CustPanel {
         lbIconDraw = new CustLabel("DiceIcon", new Dimension(150, 150));
         btnDraw = new CustButton("Tirar", "btnDraw", new Dimension(270, 90));
         btnSurrender = new CustButton("Rendirse", "btnSurrender", new Dimension(90, 90));
+    }
+
+    private void initTextures() {
+        //  botones
+        //base
+        btnSurrender.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_CBASE_TEXTURE, btnSurrender.getPreferredSize())));
+        btnDraw.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_BASE_TEXTURE, btnDraw.getPreferredSize())));
+        //presed
+        btnSurrender.setPressedIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_CPRES_TEXTURE, btnSurrender.getPreferredSize())));
+        btnDraw.setPressedIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_PRES_TEXTURE, btnDraw.getPreferredSize())));
+        //rollOver
+        btnSurrender.setRolloverIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_CSELEC_TEXTURE, btnSurrender.getPreferredSize())));
+        btnDraw.setRolloverIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_SELEC_TEXTURE, btnDraw.getPreferredSize())));
+
+        //Titulos
+        lbTitleName.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.LABEL_V2_TEXTURE, lbTitleName.getPreferredSize())));
+        lbTitleData.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.LABEL_V3_TEXTURE, lbTitleData.getPreferredSize())));
+        lbTitleDraw.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.LABEL_V3_TEXTURE, lbTitleDraw.getPreferredSize())));
     }
 
     private void confComponets() {
@@ -72,6 +86,7 @@ public class PanelGameBoard extends CustPanel {
         this.gbc.anchor = GridBagConstraints.CENTER;
 
         //label nombre
+        this.gbc.insets = new Insets(10, 0, 0, 0);
         this.gbc.gridy = 3;
         this.gbc.gridheight = 2;
         this.add(lbTitleName, this.gbc);
@@ -93,7 +108,7 @@ public class PanelGameBoard extends CustPanel {
         this.add(lbTitleDraw, this.gbc);
 
         //label icono dado
-        this.gbc.insets = new Insets(0, 0, 0, 0);
+        this.gbc.insets = new Insets(5, 0, 0, 0);
         this.gbc.gridy = 18;
         this.gbc.gridheight = 2;
         this.add(lbIconDraw, this.gbc);

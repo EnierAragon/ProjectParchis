@@ -4,8 +4,8 @@
  */
 package cr.ac.ucr.projectparchis.view.game;
 
+import cr.ac.ucr.projectparchis.view.cust.CustPalette;
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -24,7 +24,7 @@ public class PanelGameCanvas extends CustPanel {
         super("PanelGameCanvas", new Dimension(768, 768), new Dimension(768, 768));
         initGameLoop();
 
-        this.setBackground(Color.BLUE);
+        this.setBackground(CustPalette.GRAY);
         this.setVisible(true);
     }
 

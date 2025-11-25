@@ -4,8 +4,8 @@
  */
 package cr.ac.ucr.projectparchis.view.game;
 
+import cr.ac.ucr.projectparchis.view.cust.CustPalette;
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -25,24 +25,25 @@ import java.awt.event.MouseMotionListener;
  * @author enier
  */
 public class PanelGame extends CustPanel {
-
+    
     CustPanel container;
     PanelGameBoard board;
     PanelGameCanvas canvas;
-
+    
     public PanelGame() {
         initComponets();
         confComponets();
-        this.setBackground(Color.yellow);
+        this.setBackground(CustPalette.DARK_GRAY);
         this.setVisible(true);
     }
-
+    
     private void initComponets() {
         container = new CustPanel("container", new Dimension(1280, 900));
+        container.setBackground(CustPalette.DARK_GRAY);
         board = new PanelGameBoard();
         canvas = new PanelGameCanvas();
     }
-
+    
     private void confComponets() {
         this.gbc.gridx = 0;
         this.gbc.gridy = 0;
@@ -51,7 +52,7 @@ public class PanelGame extends CustPanel {
         this.gbc.weightx = 0;
         this.gbc.weighty = 0;
         container.add(canvas, this.gbc);
-
+        
         this.gbc.fill = GridBagConstraints.BOTH;
         this.gbc.weighty = 1;
 
@@ -59,27 +60,27 @@ public class PanelGame extends CustPanel {
         this.gbc.gridx = 0;
         this.gbc.weightx = 0;
         this.add(container, gbc);
-
+        
         this.gbc.insets = new Insets(0, 0, 0, 0);
         this.gbc.gridx = 1;
         this.gbc.weightx = 1;
         this.add(board, gbc);
     }
-
+    
     public void heyListenMenus(ActionListener a) {
         board.btnSurrender.addActionListener(a);
     }
-
+    
     public void heyListenActions(ActionListener a) {
         board.btnDraw.addActionListener(a);
     }
-
+    
     public void heyListenMouse(MouseListener a) {
         canvas.addMouseListener(a);
     }
-
+    
     public void heyListenMotionMouse(MouseMotionListener a) {
         canvas.addMouseMotionListener(a);
     }
-
+    
 }

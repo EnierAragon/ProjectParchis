@@ -6,6 +6,7 @@ package cr.ac.ucr.projectparchis.view.cust;
 
 import java.awt.Dimension;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -13,18 +14,17 @@ import javax.swing.JButton;
  */
 public class CustButton extends JButton {
 
-    Dimension min = new Dimension(10, 10);
-    Dimension max = new Dimension(800, 800);
-
     public CustButton() {
         this.setName("btnDefault");
         this.setActionCommand("btnDefaultComand");
+        centered();
         this.setVisible(true);
     }
 
     public CustButton(String text, String actionCommand) {
         this.setText(text);
         this.setActionCommand(actionCommand);
+        centered();
         this.setVisible(true);
     }
 
@@ -32,27 +32,24 @@ public class CustButton extends JButton {
         this.setText(text);
         this.setActionCommand(actionCommand);
         this.setPreferredSize(pref);
+
+        this.setOpaque(false);
+        this.setContentAreaFilled(false);
+        this.setBorderPainted(false);
+
+        centered();
+
         this.setVisible(true);
     }
 
-    public CustButton(String text, String actionCommand, Dimension pref, Dimension size) {
-        this.setText(text);
-        this.setActionCommand(actionCommand);
-        this.setPreferredSize(pref);
-        this.setSize(size);
-        this.setVisible(true);
-    }
+    private void centered() {
+        this.setHorizontalAlignment(SwingConstants.CENTER);
+        this.setVerticalAlignment(SwingConstants.CENTER);
 
-    public CustButton(String name, String actionName, Dimension pref, boolean border) {
-        this.setName(name);
-        this.setActionCommand(actionName);
-        this.setMinimumSize(min);
-        this.setMaximumSize(max);
-        this.setPreferredSize(pref);
-        this.setContentAreaFilled(border);
-        this.setBorderPainted(border);
-        this.setVisible(true);
+        this.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.setVerticalTextPosition(SwingConstants.CENTER);
 
+        this.setIconTextGap(0);
     }
 
 }

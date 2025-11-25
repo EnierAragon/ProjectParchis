@@ -5,11 +5,10 @@
 package cr.ac.ucr.projectparchis.view.menu;
 
 import cr.ac.ucr.projectparchis.view.cust.CustLabel;
+import cr.ac.ucr.projectparchis.view.cust.CustPalette;
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
-import javax.swing.SwingConstants;
 
 /**
  * Esta clase es el menu principal del juego permite salir de mismo, ir a la
@@ -46,17 +45,17 @@ public class PanelMenu extends CustPanel {
         initComponets();
         settingComponets();
         confComponets();
-        this.setBackground(Color.yellow);
+        this.setBackground(CustPalette.DARK_GRAY);
         this.setVisible(true);
     }
 
     private void initComponets() {
         board = new PanelMenuBoard();
-        lbIlustration = new CustLabel("lbIlustration", new Dimension(1280, 900), SwingConstants.CENTER);
+        lbIlustration = new CustLabel("", new Dimension(1280, 900));
     }
 
     private void settingComponets() {
-        lbIlustration.setBackground(Color.BLUE);
+        lbIlustration.setBackground(CustPalette.DARK_GRAY);
 
     }
 
@@ -76,7 +75,7 @@ public class PanelMenu extends CustPanel {
     public void heyListenMenus(ActionListener a) {
         board.btnPlay.addActionListener(a);
         board.btnExit.addActionListener(a);
-        
+
         board.btnLore.addActionListener(a);
         board.btnHowToPlay.addActionListener(a);
     }

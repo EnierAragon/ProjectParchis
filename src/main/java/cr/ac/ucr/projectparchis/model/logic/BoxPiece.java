@@ -65,17 +65,20 @@ public class BoxPiece {
     private double[] homeCords = new double[8];
 
     /**
-     * Blanco: 0
+     * Negro: 0
      *
-     * Negro: 1
+     * Blanco: 1
      *
-     * Azul: 2
+     * Verde: 2
      *
-     * Verde: 3
+     * Azul: 3
      */
-    public final String[] ocupedType = new String[4];
+    public final String[] Types = new String[4];
 
-    private String currentType = "None";
+    /**
+     * @see #Types
+     */
+    private String currentOcupedType = "None";
 
     /**
      * Este Parametro determina si la casilla tiene que tener un comportamiento
@@ -96,6 +99,11 @@ public class BoxPiece {
      * casas ni la meta
      */
     private boolean dobleOcuped = false;
+
+    /**
+     * Determina que espacios estan ocupados.
+     */
+    private boolean homePos1, homePos2, homePos3, homePos4 = false;
 
     private int id = 0;
 
@@ -140,10 +148,10 @@ public class BoxPiece {
     }
 
     private void initComponets() {
-        ocupedType[0] = "Blanco";
-        ocupedType[1] = "Negro";
-        ocupedType[2] = "Azul";
-        ocupedType[3] = "Verde";
+        Types[0] = "Negro";
+        Types[1] = "Blanco";
+        Types[2] = "Verde";
+        Types[3] = "Azul";
     }
 
     /**
@@ -236,52 +244,6 @@ public class BoxPiece {
         //inferior derecha
         homeCords[6] = rightCord[0];
         homeCords[7] = midCord[1] + distY / 2;
-
-    }
-
-    /**
-     * Metodo para conseguir la referencia de la cordenada superior izquierda de
-     * la casilla
-     *
-     * @return Referencia a el array primitivo double {@code boxPoint1}
-     * @see boxPoint1
-     */
-    public double[] getBoxCord1() {
-        return boxPoint1;
-    }
-
-    /**
-     * Metodo para conseguir la referencia de la cordenada inferior derecha del
-     * panel
-     *
-     * @return
-     */
-    public double[] getBoxCord2() {
-        return boxPoint2;
-    }
-
-    public double[] getMidCord() {
-        return midCord;
-    }
-
-    public double[] getGrubCord1() {
-        return leftCord;
-    }
-
-    public double[] getGrubCord2() {
-        return rightCord;
-    }
-
-    public boolean isSpecialBox() {
-        return specialBox;
-    }
-
-    public boolean isOcuped() {
-        return ocuped;
-    }
-
-    public boolean isDobleOcuped() {
-        return dobleOcuped;
     }
 
     public int getId() {
@@ -289,11 +251,94 @@ public class BoxPiece {
     }
 
     public String getCurrentType() {
-        return currentType;
+        return currentOcupedType;
     }
 
-    public double[] getHomeCords() {
-        return homeCords;
+    public boolean isSpecialBox() {
+        return specialBox;
+    }
+
+    public void setOcuped(boolean ocuped) {
+        this.ocuped = ocuped;
+    }
+
+    public boolean isOcuped() {
+        return ocuped;
+    }
+
+    public void setDobleOcuped(boolean dobleOcuped) {
+        this.dobleOcuped = dobleOcuped;
+    }
+
+    public boolean isDobleOcuped() {
+        return dobleOcuped;
+    }
+
+    public double[] getMidCord() {
+        return midCord;
+    }
+
+    public double[] getLeftCord() {
+        return leftCord;
+    }
+
+    public double[] getRightCord() {
+        return rightCord;
+    }
+
+    public boolean isHomePos1() {
+        return homePos1;
+    }
+
+    public void setHomePos1(boolean homePos1) {
+        this.homePos1 = homePos1;
+    }
+
+    public boolean isHomePos2() {
+        return homePos2;
+    }
+
+    public void setHomePos2(boolean homePos2) {
+        this.homePos2 = homePos2;
+    }
+
+    public boolean isHomePos3() {
+        return homePos3;
+    }
+
+    public void setHomePos3(boolean homePos3) {
+        this.homePos3 = homePos3;
+    }
+
+    public boolean isHomePos4() {
+        return homePos4;
+    }
+
+    public void setHomePos4(boolean homePos4) {
+        this.homePos4 = homePos4;
+    }
+
+    public double[] nexHomeCords() {
+        double[] cords = new double[2];
+
+        if (!homePos1) {
+            cords[0] = homeCords[0];
+            cords[1] = homeCords[1];
+        } else if (!homePos2) {
+            cords[0] = homeCords[2];
+            cords[1] = homeCords[3];
+        } else if (!homePos3) {
+            cords[0] = homeCords[4];
+            cords[1] = homeCords[5];
+        } else if (!homePos4) {
+            cords[0] = homeCords[6];
+            cords[1] = homeCords[7];
+        } else {
+            cords[0] = homeCords[6];
+            cords[1] = homeCords[7];
+        }
+
+        return cords;
     }
 
 }

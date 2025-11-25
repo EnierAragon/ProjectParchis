@@ -6,11 +6,14 @@ package cr.ac.ucr.projectparchis.view.menu;
 
 import cr.ac.ucr.projectparchis.view.cust.CustButton;
 import cr.ac.ucr.projectparchis.view.cust.CustLabel;
+import cr.ac.ucr.projectparchis.view.cust.CustPalette;
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
-import java.awt.Color;
+import cr.ac.ucr.projectparchis.view.resources.textures.TextureLoader;
+import cr.ac.ucr.projectparchis.view.resources.textures.Textures;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -27,16 +30,35 @@ public class PanelMenuBoard extends CustPanel {
     public PanelMenuBoard() {
         super("PanelMenuBoard", new Dimension(320, 900));
         initComponets();
+        initTextures();
         confComponents();
-        this.setBackground(Color.GREEN);
+        this.setBackground(CustPalette.DARK_GRAY);
     }
 
     private void initComponets() {
-        lbIcon = new CustLabel("Icon", new Dimension(180, 180));
+        lbIcon = new CustLabel("", new Dimension(180, 180));
         btnPlay = new CustButton("Jugar", "btnPlay", new Dimension(270, 90));
         btnHowToPlay = new CustButton("Acerca de", "btnHTP", new Dimension(270, 90));
         btnLore = new CustButton("Lore", "btnLore", new Dimension(270, 90));
         btnExit = new CustButton("Salir", "btnExit", new Dimension(270, 135));
+    }
+
+    private void initTextures() {
+        //base
+        btnPlay.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_BASE_TEXTURE, btnPlay.getPreferredSize())));
+        btnHowToPlay.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_BASE_TEXTURE, btnHowToPlay.getPreferredSize())));
+        btnLore.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_BASE_TEXTURE, btnLore.getPreferredSize())));
+        btnExit.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_BASE_TEXTURE, btnExit.getPreferredSize())));
+        //pressed
+        btnPlay.setPressedIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_PRES_TEXTURE, btnPlay.getPreferredSize())));
+        btnHowToPlay.setPressedIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_PRES_TEXTURE, btnHowToPlay.getPreferredSize())));
+        btnLore.setPressedIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_PRES_TEXTURE, btnLore.getPreferredSize())));
+        btnExit.setPressedIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_PRES_TEXTURE, btnExit.getPreferredSize())));
+        //rollOver
+        btnPlay.setRolloverIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_SELEC_TEXTURE, btnPlay.getPreferredSize())));
+        btnHowToPlay.setRolloverIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_SELEC_TEXTURE, btnHowToPlay.getPreferredSize())));
+        btnLore.setRolloverIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_SELEC_TEXTURE, btnLore.getPreferredSize())));
+        btnExit.setRolloverIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_SELEC_TEXTURE, btnExit.getPreferredSize())));
     }
 
     private void confComponents() {

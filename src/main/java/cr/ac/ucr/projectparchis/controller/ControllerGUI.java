@@ -17,14 +17,14 @@ import java.awt.event.ActionListener;
  * @author enier
  */
 public class ControllerGUI implements ActionListener {
-    
+
     PanelMenu vPanelMenu;
-    
+
     PanelGame vPanelGame;
     PanelOption vPanelOption;
     PanelQuest vPanelQuest;
     FrameGUI vFrameMain;
-    
+
     public ControllerGUI(FrameGUI vFrameMain, PanelMenu vPanelMenu, PanelGame vPanelGame, PanelOption vPanelOption, PanelQuest vPanelQuest) {
         this.vPanelMenu = vPanelMenu;
         this.vPanelGame = vPanelGame;
@@ -33,13 +33,15 @@ public class ControllerGUI implements ActionListener {
         this.vFrameMain = vFrameMain;
         initComponets();
     }
-    
+
     private void initComponets() {
         vPanelMenu.heyListenMenus(this);
+        vPanelOption.heyListenMenus(this);
         vPanelGame.heyListenMenus(this);
+        vFrameMain.heyListenMenus(this);
         vFrameMain.setVisible(true);
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -47,6 +49,15 @@ public class ControllerGUI implements ActionListener {
                 System.out.println("[LOG] Press: " + e.getActionCommand());
                 vFrameMain.remove(vPanelMenu);
                 vFrameMain.panelChange(vPanelGame);
+                vFrameMain.pop(vPanelOption);
+                break;
+            case "btnGO":
+                System.out.println("[LOG] Press: " + e.getActionCommand());
+                vFrameMain.popClose();
+                break;
+            case "btnOK":
+                System.out.println("[LOG] Press: " + e.getActionCommand());
+                vFrameMain.msgClose();
                 break;
             case "btnSurrender":
                 System.out.println("[LOG] Press: " + e.getActionCommand());
@@ -69,5 +80,5 @@ public class ControllerGUI implements ActionListener {
                 System.out.println("[LOG] OutOfSwitch: " + e.getActionCommand());
         }
     }
-    
+
 }

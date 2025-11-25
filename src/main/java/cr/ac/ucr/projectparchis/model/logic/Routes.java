@@ -14,61 +14,41 @@ public class Routes {
 
     Table table;
 
-    ArrayList<BoxPiece> routeWithe;
     ArrayList<BoxPiece> routeBlack;
-    ArrayList<BoxPiece> routeBlue;
+    ArrayList<BoxPiece> routeWithe;
     ArrayList<BoxPiece> routeGreen;
+    ArrayList<BoxPiece> routeBlue;
 
     public Routes() {
         initComponets();
-        fillListWithe();
         fillListBlack();
-        fillListBlue();
+        fillListWithe();
         fillListGreen();
+        fillListBlue();
     }
 
     public Routes(Table table) {
         initComponets(table);
-        fillListWithe();
         fillListBlack();
-        fillListBlue();
+        fillListWithe();
         fillListGreen();
+        fillListBlue();
     }
 
     private void initComponets() {
         table = new Table();
         routeBlack = new ArrayList<>();
         routeWithe = new ArrayList<>();
-        routeBlue = new ArrayList<>();
         routeGreen = new ArrayList<>();
+        routeBlue = new ArrayList<>();
     }
 
     private void initComponets(Table table) {
         this.table = table;
         routeBlack = new ArrayList<>();
         routeWithe = new ArrayList<>();
-        routeBlue = new ArrayList<>();
         routeGreen = new ArrayList<>();
-    }
-
-    private void fillListWithe() {
-        routeWithe.add(table.searchIDBox(table.boxHomes, 110));
-        for (BoxPiece boxPiece : table.boxExternSpaces) {
-            if (65 <= boxPiece.getId() && 68 >= boxPiece.getId()) {
-                routeWithe.add(boxPiece);
-            }
-        }
-        for (BoxPiece boxPiece : table.boxExternSpaces) {
-            if (1 <= boxPiece.getId() && 60 >= boxPiece.getId()) {
-                routeWithe.add(boxPiece);
-            }
-        }
-        for (BoxPiece boxPiece : table.boxInternSpaces) {
-            if (90 <= boxPiece.getId() && 96 >= boxPiece.getId()) {
-                routeWithe.add(boxPiece);
-            }
-        }
-        routeWithe.add(table.searchIDBox(table.boxGoal, 103));
+        routeBlue = new ArrayList<>();
     }
 
     private void fillListBlack() {
@@ -91,24 +71,24 @@ public class Routes {
         routeBlack.add(table.searchIDBox(table.boxGoal, 101));
     }
 
-    private void fillListBlue() {
-        routeBlue.add(table.searchIDBox(table.boxHomes, 113));
+    private void fillListWithe() {
+        routeWithe.add(table.searchIDBox(table.boxHomes, 110));
         for (BoxPiece boxPiece : table.boxExternSpaces) {
-            if (48 <= boxPiece.getId() && 68 >= boxPiece.getId()) {
-                routeBlue.add(boxPiece);
+            if (65 <= boxPiece.getId() && 68 >= boxPiece.getId()) {
+                routeWithe.add(boxPiece);
             }
         }
         for (BoxPiece boxPiece : table.boxExternSpaces) {
-            if (1 <= boxPiece.getId() && 43 >= boxPiece.getId()) {
-                routeBlue.add(boxPiece);
+            if (1 <= boxPiece.getId() && 60 >= boxPiece.getId()) {
+                routeWithe.add(boxPiece);
             }
         }
         for (BoxPiece boxPiece : table.boxInternSpaces) {
-            if (83 <= boxPiece.getId() && 89 >= boxPiece.getId()) {
-                routeBlue.add(boxPiece);
+            if (90 <= boxPiece.getId() && 96 >= boxPiece.getId()) {
+                routeWithe.add(boxPiece);
             }
         }
-        routeBlue.add(table.searchIDBox(table.boxGoal, 102));
+        routeWithe.add(table.searchIDBox(table.boxGoal, 103));
     }
 
     private void fillListGreen() {
@@ -129,6 +109,26 @@ public class Routes {
             }
         }
         routeGreen.add(table.searchIDBox(table.boxGoal, 100));
+    }
+
+    private void fillListBlue() {
+        routeBlue.add(table.searchIDBox(table.boxHomes, 113));
+        for (BoxPiece boxPiece : table.boxExternSpaces) {
+            if (48 <= boxPiece.getId() && 68 >= boxPiece.getId()) {
+                routeBlue.add(boxPiece);
+            }
+        }
+        for (BoxPiece boxPiece : table.boxExternSpaces) {
+            if (1 <= boxPiece.getId() && 43 >= boxPiece.getId()) {
+                routeBlue.add(boxPiece);
+            }
+        }
+        for (BoxPiece boxPiece : table.boxInternSpaces) {
+            if (83 <= boxPiece.getId() && 89 >= boxPiece.getId()) {
+                routeBlue.add(boxPiece);
+            }
+        }
+        routeBlue.add(table.searchIDBox(table.boxGoal, 102));
     }
 
 }

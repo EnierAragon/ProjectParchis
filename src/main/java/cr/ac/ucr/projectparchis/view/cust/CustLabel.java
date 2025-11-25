@@ -4,10 +4,10 @@
  */
 package cr.ac.ucr.projectparchis.view.cust;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.Icon;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -15,59 +15,53 @@ import javax.swing.JLabel;
  */
 public class CustLabel extends JLabel {
 
-    Dimension min = new Dimension(10, 10);
     Dimension pref = new Dimension(300, 150);
-    Dimension max = new Dimension(400, 150);
 
     public CustLabel() {
         this.setHorizontalAlignment(CENTER);
-        this.setBackground(Color.GRAY);
+        this.setBackground(CustPalette.GRAY);
+        centered();
         this.setOpaque(true);
     }
 
     public CustLabel(Icon image) {
         super(image);
+        pref = new Dimension(image.getIconWidth(), image.getIconHeight());
+        centered();
         this.setOpaque(true);
     }
 
     public CustLabel(Icon image, Dimension pref) {
         super(image);
-        this.setMinimumSize(min);
         this.setPreferredSize(pref);
-        this.setMaximumSize(max);
+        centered();
         this.setOpaque(true);
     }
 
     public CustLabel(String text) {
         super(text);
         this.setHorizontalAlignment(CENTER);
-        this.setBackground(Color.GRAY);
+        this.setBackground(CustPalette.GRAY);
+        centered();
         this.setOpaque(true);
     }
 
     public CustLabel(String text, Dimension pref) {
         super(text);
-        this.setHorizontalAlignment(CENTER);
-        this.setMinimumSize(min);
         this.setPreferredSize(pref);
-        this.setMaximumSize(max);
+        this.setBackground(CustPalette.DARK_GRAY);
+        centered();
         this.setOpaque(true);
     }
 
-    public CustLabel(String text, int horizontalAlignment) {
-        super(text, horizontalAlignment);
-        this.setMinimumSize(min);
-        this.setPreferredSize(pref);
-        this.setMaximumSize(max);
-        this.setOpaque(true);
-    }
+    private void centered() {
+        this.setHorizontalAlignment(SwingConstants.CENTER);
+        this.setVerticalAlignment(SwingConstants.CENTER);
 
-    public CustLabel(String text, Dimension pref, int horizontalAlignment) {
-        super(text, horizontalAlignment);
-        this.setMinimumSize(min);
-        this.setPreferredSize(pref);
-        this.setMaximumSize(max);
-        this.setOpaque(true);
+        this.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.setVerticalTextPosition(SwingConstants.CENTER);
+
+        this.setIconTextGap(0);
     }
 
 }
