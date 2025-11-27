@@ -9,11 +9,18 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
+ *
+ * Clase creada para cargar texturas de distintos tipos de forma eficiente y con
+ * opcion de cargar la textura con o sin escalado segun el metodo usado
+ *
+ * @see Textures
  *
  * @author enier
  */
@@ -24,6 +31,9 @@ public final class TextureLoader {
 
     // Cache para imágenes escaladas -> key combinada: "ruta:WIDTHxHEIGHT"
     private static final Map<String, BufferedImage> SCALED_CACHE = new ConcurrentHashMap<>();
+
+    // Cache para Giff
+    private static final Map<String, ImageIcon> gifCache = new ConcurrentHashMap<>();
 
     private TextureLoader() {
     }
@@ -55,6 +65,29 @@ public final class TextureLoader {
             System.err.println("[TextureLoader] Error cargando: " + resourcePath + " -> " + e.getMessage());
             return null;
         }
+    }
+
+    /**
+     *
+     * Carga un gif desde resources
+     *
+     * @param resourcePath ruta en /resources (ej: "/textures/chips/red.png")
+     * @return Gif en formato ImageIcon, o null si falla
+     */
+    public static ImageIcon loadGIF(String resourcePath) {
+        if (gifCache.containsKey(resourcePath)) {
+            return gifCache.get(resourcePath);
+        }
+
+        URL url = TextureLoader.class.getResource(resourcePath);
+        if (url == null) {
+            System.err.println("Error: GIF no encontrado: " + resourcePath);
+            return null;
+        }
+
+        ImageIcon icon = new ImageIcon(url);
+        gifCache.put(resourcePath, icon);
+        return icon;
     }
 
     /**

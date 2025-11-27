@@ -9,5 +9,16 @@ package cr.ac.ucr.projectparchis.model.entities;
  * @author enier
  */
 public class Player {
-    
+
+    private String group;
+    private int points = 0;
+
+    public Player(String group) {
+        this.group = group;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
 }

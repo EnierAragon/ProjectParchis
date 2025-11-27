@@ -5,6 +5,8 @@
 package cr.ac.ucr.projectparchis.model.logic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -14,10 +16,12 @@ public class Routes {
 
     Table table;
 
-    ArrayList<BoxPiece> routeBlack;
-    ArrayList<BoxPiece> routeWithe;
-    ArrayList<BoxPiece> routeGreen;
-    ArrayList<BoxPiece> routeBlue;
+    public Map<String, ArrayList<BoxPiece>> routesMap = new HashMap<>();
+
+    public ArrayList<BoxPiece> routeBlack;
+    public ArrayList<BoxPiece> routeWhite;
+    public ArrayList<BoxPiece> routeGreen;
+    public ArrayList<BoxPiece> routeBlue;
 
     public Routes() {
         initComponets();
@@ -25,6 +29,7 @@ public class Routes {
         fillListWithe();
         fillListGreen();
         fillListBlue();
+        initMap();
     }
 
     public Routes(Table table) {
@@ -33,12 +38,13 @@ public class Routes {
         fillListWithe();
         fillListGreen();
         fillListBlue();
+        initMap();
     }
 
     private void initComponets() {
         table = new Table();
         routeBlack = new ArrayList<>();
-        routeWithe = new ArrayList<>();
+        routeWhite = new ArrayList<>();
         routeGreen = new ArrayList<>();
         routeBlue = new ArrayList<>();
     }
@@ -46,7 +52,7 @@ public class Routes {
     private void initComponets(Table table) {
         this.table = table;
         routeBlack = new ArrayList<>();
-        routeWithe = new ArrayList<>();
+        routeWhite = new ArrayList<>();
         routeGreen = new ArrayList<>();
         routeBlue = new ArrayList<>();
     }
@@ -72,23 +78,23 @@ public class Routes {
     }
 
     private void fillListWithe() {
-        routeWithe.add(table.searchIDBox(table.boxHomes, 110));
+        routeWhite.add(table.searchIDBox(table.boxHomes, 110));
         for (BoxPiece boxPiece : table.boxExternSpaces) {
             if (65 <= boxPiece.getId() && 68 >= boxPiece.getId()) {
-                routeWithe.add(boxPiece);
+                routeWhite.add(boxPiece);
             }
         }
         for (BoxPiece boxPiece : table.boxExternSpaces) {
             if (1 <= boxPiece.getId() && 60 >= boxPiece.getId()) {
-                routeWithe.add(boxPiece);
+                routeWhite.add(boxPiece);
             }
         }
         for (BoxPiece boxPiece : table.boxInternSpaces) {
             if (90 <= boxPiece.getId() && 96 >= boxPiece.getId()) {
-                routeWithe.add(boxPiece);
+                routeWhite.add(boxPiece);
             }
         }
-        routeWithe.add(table.searchIDBox(table.boxGoal, 103));
+        routeWhite.add(table.searchIDBox(table.boxGoal, 103));
     }
 
     private void fillListGreen() {
@@ -129,6 +135,49 @@ public class Routes {
             }
         }
         routeBlue.add(table.searchIDBox(table.boxGoal, 102));
+    }
+
+    private void initMap() {
+        routesMap.put("Azul", routeBlue);
+        routesMap.put("Verde", routeGreen);
+        routesMap.put("Negro", routeBlack);
+        routesMap.put("Blanco", routeWhite);
+    }
+
+    /**
+     * @param boxPieces array a comparar
+     * @param id id a buscar
+     * @return regresa el BoxPiece que sea igual al id sino null
+     */
+    public BoxPiece getBoxPiece(ArrayList<BoxPiece> boxPieces, int id) {
+        for (BoxPiece boxPiece : boxPieces) {
+            if (boxPiece.getId() == id) {
+                return boxPiece;
+            }
+        }
+        return null;
+    }
+
+    public BoxPiece nexBoxPiece(ArrayList<BoxPiece> boxPieces, int id) {
+        int index;
+        index = boxPieces.indexOf(getBoxPiece(boxPieces, id));
+        if (index == -1) {
+            return null;
+        } else if (index + 1 > boxPieces.size()) {
+            return boxPieces.get(index);
+        } else {
+            return boxPieces.get(index + 1);
+        }
+    }
+
+    public int getIndex(ArrayList<BoxPiece> boxPieces, int id) {
+        int index;
+        index = boxPieces.indexOf(getBoxPiece(boxPieces, id));
+        return index;
+    }
+
+    public BoxPiece getBoxPieceIndex(ArrayList<BoxPiece> boxPieces, int index) {
+        return boxPieces.get(index);
     }
 
 }
