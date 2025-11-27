@@ -93,6 +93,7 @@ public class ControllerGUI implements ActionListener {
                 vFrameMain.panelChange(vPanelGame);
                 vFrameMain.popClose();
                 vPanelGame.getCanvas().start();
+                
                 break;
             case "btnOK":
                 SoundBank.click();

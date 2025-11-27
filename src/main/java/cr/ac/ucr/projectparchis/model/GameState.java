@@ -57,13 +57,12 @@ public class GameState {
 
     public void setGroup(String group) {
         lastID = 0;
-        this.group = group;
 
         playerManual = new Player(group);
         playerCPU = new Player(invertPlayer.get(group));
 
         setChipGrupP1(group);
-        setChipGrupP2(group);
+        setChipGrupP2(invertPlayer.get(group));
 
         initTurnCycle(playerManual, playerCPU);
 
@@ -72,10 +71,10 @@ public class GameState {
 
     private void setChipGrupP1(String group) {
         System.out.println("[log] setcGrup: " + group);
-        chip1P1 = new Chip(routes.routesMap.get(group).getFirst().getId(), group);
-        chip2P1 = new Chip(routes.routesMap.get(group).getFirst().getId(), group);
-        chip3P1 = new Chip(routes.routesMap.get(group).getFirst().getId(), group);
-        chip4P1 = new Chip(routes.routesMap.get(group).getFirst().getId(), group);
+        chip1P1 = new Chip(routes.routesMap.get(group).get(0).getId(), group);
+        chip2P1 = new Chip(routes.routesMap.get(group).get(0).getId(), group);
+        chip3P1 = new Chip(routes.routesMap.get(group).get(0).getId(), group);
+        chip4P1 = new Chip(routes.routesMap.get(group).get(0).getId(), group);
         chipsP1 = new ArrayList<>(Arrays.asList(chip1P1, chip2P1, chip3P1, chip4P1));
         for (Chip chip : chipsP1) {
             chip.id = lastID++;
@@ -83,12 +82,11 @@ public class GameState {
     }
 
     private void setChipGrupP2(String group) {
-        String invGroup = invertPlayer.get(group);
-        System.out.println("[log] setcGrup: " + invGroup);
-        chip1P2 = new Chip(routes.routesMap.get(invGroup).getFirst().getId(), invGroup);
-        chip2P2 = new Chip(routes.routesMap.get(invGroup).getFirst().getId(), invGroup);
-        chip3P2 = new Chip(routes.routesMap.get(invGroup).getFirst().getId(), invGroup);
-        chip4P2 = new Chip(routes.routesMap.get(invGroup).getFirst().getId(), invGroup);
+        System.out.println("[log] setcGrup: " + group);
+        chip1P2 = new Chip(routes.routesMap.get(group).get(0).getId(), group);
+        chip2P2 = new Chip(routes.routesMap.get(group).get(0).getId(), group);
+        chip3P2 = new Chip(routes.routesMap.get(group).get(0).getId(), group);
+        chip4P2 = new Chip(routes.routesMap.get(group).get(0).getId(), group);
         chipsP2 = new ArrayList<>(Arrays.asList(chip1P2, chip2P2, chip3P2, chip4P2));
         for (Chip chip : chipsP2) {
             chip.id = lastID++;
@@ -100,9 +98,9 @@ public class GameState {
     }
 
     public void nexBox(Chip chip, Player p) {
-        ArrayList<BoxPiece> route = routes.routesMap.get(chip.getGroup());
+        ArrayList<BoxPiece> route = routes.routesMap.get(p.getGroup());
         BoxPiece current = routes.getBoxPiece(route, chip.getBoxID());
-        int index = routes.routesMap.get(chip.getGroup()).indexOf(current);
+        int index = routes.routesMap.get(p.getGroup()).indexOf(current);
 
         // --- liberar estado actual dependiendo del tipo de ocupación ---
         if (index == 0) {
@@ -123,8 +121,13 @@ public class GameState {
             chipUpdate();
         } else {
             // Casillas normales (usa occupied / doubleOccupied)
-            if (current.isDoubleOccupied()) {
-                current.setDoubleOccupied(false);
+            if (current.isDoubleOccupiedL()) {
+                current.setDoubleOccupiedL(false);
+                current.occupy();
+                chipUpdate();
+
+            } else if (current.isDoubleOccupiedR()) {
+                current.setDoubleOccupiedR(false);
                 current.occupy();
                 chipUpdate();
 
@@ -142,10 +145,58 @@ public class GameState {
 
     }
 
+    public void nextBoxNumber(int diceNumber, Chip chip, Player p) {
+        ArrayList<BoxPiece> route = routes.routesMap.get(p.getGroup());
+        BoxPiece current = routes.getBoxPiece(route, chip.getBoxID());
+        int index = routes.routesMap.get(p.getGroup()).indexOf(current);
+
+        // --- liberar estado actual dependiendo del tipo de ocupación ---
+        if (index == 0) {
+            // Estamos en la casilla inicial (usa subdivisiones)
+            if (current.isOccupiedBothLeft()) {
+                current.releaseBothLeft();
+            }
+            if (current.isOccupiedBothRight()) {
+                current.releaseBothRight();
+            }
+            if (current.isOccupiedUpLeft()) {
+                current.releaseUpLeft();
+            }
+            if (current.isOccupiedUpRight()) {
+                current.releaseUpRight();
+            }
+
+            chipUpdate();
+        } else {
+            // Casillas normales (usa occupied / doubleOccupied)
+            if (current.isDoubleOccupiedL()) {
+                current.setDoubleOccupiedL(false);
+                current.occupy();
+                chipUpdate();
+
+            } else if (current.isDoubleOccupiedR()) {
+                current.setDoubleOccupiedR(false);
+                current.occupy();
+                chipUpdate();
+
+            } else if (current.isOccupied()) {
+                current.release(); // deja la casilla completamente libre
+            }
+        }
+
+        // --- mover ficha a la siguiente casilla ---
+        BoxPiece next = routes.getBoxPieceIndex(route, index + diceNumber);
+        chip.setBoxID(next.getId());
+
+        // Llamar al método que se encarga de ocupar la casilla correcta
+        currentBox(chip, p);
+
+    }
+
     public void currentBox(Chip chip, Player p) {
         ArrayList<BoxPiece> route = routes.routesMap.get(chip.getGroup());
         BoxPiece box = routes.getBoxPiece(route, chip.getBoxID());
-        int index = routes.routesMap.get(chip.getGroup()).indexOf(box);
+        int index = routes.routesMap.get(p.getGroup()).indexOf(box);
 
         String color = chip.getGroup(); // para guardar quién ocupa
 
@@ -156,22 +207,22 @@ public class GameState {
 
             // Slot 1 vacío → ocuparlo
             if (!box.isOccupied()) {
-                updateCordsChip(chip, p, 0);
                 box.occupy();
                 box.setCurrentOccupiedType(color);
+                updateCordsChip(chip, p, 0);
                 return;
             }
 
             // Slot 2 vacío → marcar doubleOccupied
-            if (!box.isDoubleOccupied()) {
+            if (!box.isDoubleOccupiedL()) {
+                box.setDoubleOccupiedL(true);
                 updateCordsChip(chip, p, 1);
-                box.setDoubleOccupied(true);
-                box.setCurrentOccupiedType(color);
                 return;
             }
 
             // Ya está llena → slot 3 (fallback)
-            if (box.isDoubleOccupied()) {
+            if (box.isDoubleOccupiedR()) {
+                box.setDoubleOccupiedR(true);
                 updateCordsChip(chip, p, 2);
                 return;
             }
@@ -183,28 +234,31 @@ public class GameState {
         //     CASILLA INICIAL (index == 0)
         //     Usa 4 subdivisiones
         // ===============================
-        if (!box.isOccupiedUpLeft()) {
-            updateCordsChip(chip, p, 3);
-            box.occupyUpLeft();
-            return;
-        }
+        if (index == 0) {
 
-        if (!box.isOccupiedUpRight()) {
-            updateCordsChip(chip, p, 4);
-            box.occupyUpRight();
-            return;
-        }
+            if (!box.isOccupiedUpLeft()) {
+                updateCordsChip(chip, p, 3);
+                box.occupyUpLeft();
+                return;
+            }
 
-        if (!box.isOccupiedBothLeft()) {
-            updateCordsChip(chip, p, 5);
-            box.occupyBothLeft();
-            return;
-        }
+            if (!box.isOccupiedBothLeft()) {
+                updateCordsChip(chip, p, 4);
+                box.occupyBothLeft();
+                return;
+            }
 
-        if (!box.isOccupiedBothRight()) {
-            updateCordsChip(chip, p, 6);
-            box.occupyBothRight();
-            return;
+            if (!box.isOccupiedUpRight()) {
+                updateCordsChip(chip, p, 5);
+                box.occupyUpRight();
+                return;
+            }
+
+            if (!box.isOccupiedBothRight()) {
+                updateCordsChip(chip, p, 6);
+                box.occupyBothRight();
+                return;
+            }
         }
     }
 
@@ -218,7 +272,7 @@ public class GameState {
      * @param type determina en que posicion se actualiza
      */
     private void updateCordsChip(Chip chip, Player p, int type) {
-        ArrayList<BoxPiece> route = routes.routesMap.get(chip.getGroup());
+        ArrayList<BoxPiece> route = routes.routesMap.get(p.getGroup());
         BoxPiece box = routes.getBoxPiece(route, chip.getBoxID());
 
         // Tabla de posibles coordenadas según "type"
@@ -227,8 +281,8 @@ public class GameState {
             box.getLeftCord(), // 1: Centro Izquierda
             box.getRightCord(), // 2: Centro Derecha
             box.getSuLeft(), // 3: Superior Izquierda
-            box.getInLeft(), // 4: Superior Derecha
-            box.getSuRight(), // 5: Inferior Izquierda
+            box.getSuRight(), // 4:  Superior Derecha
+            box.getInLeft(), // 5:Inferior Izquierda
             box.getInRight() // 6: Inferior Derecha
         };
 
@@ -239,14 +293,11 @@ public class GameState {
 
         double[] c = coords[type];
         chip.setCords((int) c[0], (int) c[1]);
+        System.out.println("[LOD] chipBoxID: " + chip.getBoxID());
+        System.out.println("[LOD] boxID: " + box.getId());
+        System.out.println("[LOG] game state update cords c[] Type: " + type);
         System.out.println("[LOG] game state update cords c[]: " + c[0] + "  " + c[1]);
         System.out.println("[LOG] game state update cords chip: " + chip.getX() + "  " + chip.getY());
-    }
-
-    public void numberUpdate(int diceNumber, Chip chip, Player p) {
-        for (int i = 0; i < diceNumber; i++) {
-            nexBox(chip, p);
-        }
     }
 
     private void chipUpdate() {

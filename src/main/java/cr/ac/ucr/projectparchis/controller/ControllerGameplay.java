@@ -30,7 +30,7 @@ public class ControllerGameplay implements ActionListener {
 
     boolean draw = false;
 
-    public int lastDice = 1;
+    public int lastDice;
 
     GameState mState;
 
@@ -45,7 +45,6 @@ public class ControllerGameplay implements ActionListener {
         callMotionAdapterMouse();
         callAdapterMouse();
         initGameLoop();
-        start();
     }
 
     private void initComponets(FrameGUI vFrameGUI, PanelGame vPanelGame, PanelQuest vPanelQuest) {
@@ -66,13 +65,15 @@ public class ControllerGameplay implements ActionListener {
 
                 System.out.println("[LOG] Press: " + e.getActionCommand());
 
-                mState.diceRoll();
+                lastDice = mState.diceRoll();
 
                 vPanelGame.getBoard().diceUpdateIcon(TextureLoader.loadGIF(Textures.DICE_GIF));
 
                 updateDiceContainer();
 
                 draw = true;
+
+                start();
 
                 break;
 
@@ -91,8 +92,7 @@ public class ControllerGameplay implements ActionListener {
                     System.out.println("enter to cip");
                     if (cip != null) {
                         System.out.println("cip not false");
-                        mState.numberUpdate(lastDice, cip, mState.listCycle.current());
-                        vPanelGame.getCanvas().updateCord(cip.getX(), cip.getY(), cip.id);
+                        mState.nextBoxNumber(lastDice, cip, mState.listCycle.current());
                         draw = false;
                         mState.listCycle.next();
                         updateIconStatusContainer();
@@ -181,7 +181,7 @@ public class ControllerGameplay implements ActionListener {
         });
     }
 
-    private void start() {
+    public void start() {
         if (!running) {
             running = true;
             timer.start();

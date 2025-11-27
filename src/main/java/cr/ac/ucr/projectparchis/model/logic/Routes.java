@@ -176,4 +176,8 @@ public class Routes {
         return index;
     }
 
+    public BoxPiece getBoxPieceIndex(ArrayList<BoxPiece> boxPieces, int index) {
+        return boxPieces.get(index);
+    }
+
 }
