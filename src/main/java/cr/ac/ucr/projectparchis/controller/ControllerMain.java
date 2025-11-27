@@ -5,7 +5,6 @@
 package cr.ac.ucr.projectparchis.controller;
 
 import cr.ac.ucr.projectparchis.model.GameState;
-import cr.ac.ucr.projectparchis.model.entities.Player;
 import cr.ac.ucr.projectparchis.model.logic.Routes;
 import cr.ac.ucr.projectparchis.model.logic.Table;
 import cr.ac.ucr.projectparchis.view.FrameGUI;
@@ -14,8 +13,6 @@ import cr.ac.ucr.projectparchis.view.menu.PanelMenu;
 import cr.ac.ucr.projectparchis.view.options.PanelOption;
 import cr.ac.ucr.projectparchis.view.options.PanelQuest;
 import cr.ac.ucr.projectparchis.view.resources.sound.MusicPlayer;
-import cr.ac.ucr.projectparchis.view.resources.sound.SoundBank;
-import cr.ac.ucr.projectparchis.view.resources.textures.TexturesBank;
 
 /**
  *
@@ -24,9 +21,6 @@ import cr.ac.ucr.projectparchis.view.resources.textures.TexturesBank;
 public class ControllerMain {
 
     MusicPlayer musicBG = new MusicPlayer();
-    SoundBank sounds = new SoundBank();
-
-    TexturesBank texturesFast = new TexturesBank();
 
     PanelMenu vPanelMenu = new PanelMenu();
     PanelGame vPanelGame = new PanelGame();
@@ -34,14 +28,11 @@ public class ControllerMain {
     PanelQuest vPanelQuest = new PanelQuest();
     FrameGUI vFrameMain = new FrameGUI(vPanelMenu);
 
-    Player mYouPlayer = new Player();
-    Player mCpuPlayer = new Player();
     Table mLogicTable = new Table();
     Routes mLogicRoutes = new Routes(mLogicTable);
-    GameState mGameState = new GameState();
+    GameState mGameState = new GameState(mLogicRoutes);
 
-    ControllerSprite cSprite = new ControllerSprite(texturesFast, vPanelMenu, vPanelGame, vPanelOption, vPanelQuest);
-    ControllerGameplay cGameplay = new ControllerGameplay(vFrameMain, vPanelGame);
+    ControllerGameplay cGameplay;
     ControllerGUI cGUI;
 
     public ControllerMain() {
@@ -49,8 +40,10 @@ public class ControllerMain {
     }
 
     private void initComponets() {
-        cGUI = new ControllerGUI(vFrameMain, vPanelMenu, vPanelGame, vPanelOption, vPanelQuest);
+        this.cGameplay = new ControllerGameplay(vFrameMain, vPanelGame, mGameState, vPanelQuest);
+        this.cGUI = new ControllerGUI(vFrameMain, vPanelMenu, vPanelGame, vPanelOption, mGameState);
         musicBG.playLoop(MusicPlayer.BGM);
+        musicBG.setVolume(0.7f);
     }
 
 }

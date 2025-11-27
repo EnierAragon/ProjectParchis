@@ -18,7 +18,7 @@ import java.awt.image.BufferedImage;
  */
 public abstract class GraphicsSprite {
 
-    protected int id;
+    public int id;
     protected int x, y;
     protected int width, height;
     protected boolean visible = true;
@@ -107,6 +107,14 @@ public abstract class GraphicsSprite {
         if (visible && sprite != null) {
             g.drawImage(sprite, x, y, null);
         }
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     public abstract void update(Image texture);

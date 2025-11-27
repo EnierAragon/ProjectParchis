@@ -10,6 +10,7 @@ import cr.ac.ucr.projectparchis.view.cust.CustPalette;
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
 import cr.ac.ucr.projectparchis.view.resources.textures.TextureLoader;
 import cr.ac.ucr.projectparchis.view.resources.textures.Textures;
+import cr.ac.ucr.projectparchis.view.resources.textures.TexturesBank;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -42,9 +43,9 @@ public class PanelGameBoard extends CustPanel {
     private void initComponets() {
         lbTitleName = new CustLabel("Name", new Dimension(270, 90));
         lbTitleData = new CustLabel("CurrentAction", new Dimension(270, 135));
-        lbTitleDraw = new CustLabel("DiceNumber", new Dimension(270, 45));
-        lbIconTurn = new CustLabel("StatusIcon", new Dimension(180, 180));
-        lbIconDraw = new CustLabel("DiceIcon", new Dimension(150, 150));
+        lbTitleDraw = new CustLabel("Dado: ", new Dimension(270, 45));
+        lbIconTurn = new CustLabel("", new Dimension(180, 180));
+        lbIconDraw = new CustLabel("", new Dimension(150, 150));
         btnDraw = new CustButton("Tirar", "btnDraw", new Dimension(270, 90));
         btnSurrender = new CustButton("Rendirse", "btnSurrender", new Dimension(90, 90));
     }
@@ -65,6 +66,10 @@ public class PanelGameBoard extends CustPanel {
         lbTitleName.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.LABEL_V2_TEXTURE, lbTitleName.getPreferredSize())));
         lbTitleData.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.LABEL_V3_TEXTURE, lbTitleData.getPreferredSize())));
         lbTitleDraw.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.LABEL_V3_TEXTURE, lbTitleDraw.getPreferredSize())));
+
+        //Iconos
+        lbIconTurn.setIcon(TexturesBank.STATUS_NONE);
+        lbIconDraw.setIcon(TexturesBank.DICE1);
     }
 
     private void confComponets() {
@@ -108,18 +113,38 @@ public class PanelGameBoard extends CustPanel {
         this.add(lbTitleDraw, this.gbc);
 
         //label icono dado
-        this.gbc.insets = new Insets(5, 0, 0, 0);
+        this.gbc.insets = new Insets(15, 0, 0, 0);
         this.gbc.gridy = 18;
         this.gbc.gridheight = 2;
         this.add(lbIconDraw, this.gbc);
 
         //boton tirada
-        this.gbc.insets = new Insets(25, 0, 0, 0);
+        this.gbc.insets = new Insets(15, 0, 0, 0);
         this.gbc.gridy = 21;
         this.gbc.gridwidth = 6;
         this.gbc.gridheight = 2;
         this.add(btnDraw, this.gbc);
 
+    }
+
+    public void nameUpdateText(String name) {
+        lbTitleName.setText(name);
+    }
+
+    public void stateUpdateText(String txt) {
+        lbTitleData.setText(txt);
+    }
+
+    public void diceUpdateText(String txt) {
+        lbTitleDraw.setText("Dado: " + txt);
+    }
+
+    public void stateUpdateIcon(ImageIcon icon) {
+        lbIconTurn.setIcon(icon);
+    }
+
+    public void diceUpdateIcon(ImageIcon icon) {
+        lbIconDraw.setIcon(icon);
     }
 
 }

@@ -18,7 +18,7 @@ public class SoundBank {
     private static final Map<String, Clip> clips = new HashMap<>();
 
     // Volumen global (0.0 = silencio, 1.0 = máximo)
-    private static float volume = 1.0f;
+    private static float volume = 0.9f;
 
     // --- Se cargan todos los sonidos una sola vez ---
     static {

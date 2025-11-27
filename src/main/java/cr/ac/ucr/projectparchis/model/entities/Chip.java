@@ -10,44 +10,52 @@ package cr.ac.ucr.projectparchis.model.entities;
  */
 public class Chip {
 
-    public static final int CENTER = 1;
-    public static final int LEFT = 2;
-    public static final int RINGHT = 3;
+    public int id;
+    private int boxID;
+    private String group;
 
-    /**
-     * Negro: 0
-     *
-     * Blanco: 1
-     *
-     * Verde: 2
-     *
-     * Azul: 3
-     */
-    public final String[] Types = new String[4];
-
-    private int id;
-    private int plaze;
-    private String grub;
+    private int x;
+    private int y;
 
     /**
      *
      *
      * @param plaze indica en que punto del tablero esta de su ruta
      * {@link cr.ac.ucr.projectparchis.model.logic.Routes}
-     * @param grup usar {@link #Types}
+     * @param grup usar {@link #TYPES}
      */
     public Chip(int plaze, String grup) {
-        initComponets();
-        this.plaze = plaze;
-        this.grub = grup;
-
+        this.boxID = plaze;
+        this.group = grup;
     }
 
-    private void initComponets() {
-        Types[0] = "Negro";
-        Types[1] = "Blanco";
-        Types[2] = "Verde";
-        Types[3] = "Azul";
+    public void setBoxID(int boxID) {
+        this.boxID = boxID;
+    }
+
+    public void setGrub(String grub) {
+        this.group = grub;
+    }
+
+    public void setCords(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getBoxID() {
+        return boxID;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
 }

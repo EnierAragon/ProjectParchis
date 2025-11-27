@@ -44,6 +44,8 @@ public class PanelMenuBoard extends CustPanel {
     }
 
     private void initTextures() {
+        //icon
+        lbIcon.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.ICON_PARCHIS, lbIcon.getPreferredSize())));
         //base
         btnPlay.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_BASE_TEXTURE, btnPlay.getPreferredSize())));
         btnHowToPlay.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_BASE_TEXTURE, btnHowToPlay.getPreferredSize())));
