@@ -44,14 +44,15 @@ public class PanelOption extends CustPanel {
 
     public PanelOption() {
         super("Selection", new Dimension(800, 400));
-        initParameters();
+        initParametersProp();
         initTextures();
         confComponets();
         confPanel1();
         confPanel2();
     }
 
-    private void initParameters() {
+    private void initParametersProp() {
+        this.setBackground(CustPalette.DARK_GRAY);
         container1 = new CustPanel("container1", new Dimension(400, 400));
         container2 = new CustPanel("container2", new Dimension(400, 400));
         container1.setBackground(CustPalette.DARK_GRAY);
@@ -104,12 +105,17 @@ public class PanelOption extends CustPanel {
     }
 
     private void initTextures() {
-        btnGO.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_BASE_TEXTURE, btnGO.getPreferredSize())));
-        btnGO.setPressedIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_PRES_TEXTURE, btnGO.getPreferredSize())));
-        btnGO.setRolloverIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_SELEC_TEXTURE, btnGO.getPreferredSize())));
+        btnGO.setIcon(
+                new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_BASE_TEXTURE, btnGO.getPreferredSize())));
+        btnGO.setPressedIcon(
+                new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_PRES_TEXTURE, btnGO.getPreferredSize())));
+        btnGO.setRolloverIcon(
+                new ImageIcon(TextureLoader.loadScaledPixel(Textures.BUTTON_SELEC_TEXTURE, btnGO.getPreferredSize())));
 
-        lbTitleName.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.LABEL_V2_TEXTURE, lbTitleName.getPreferredSize())));
-        lbTitleTeam.setIcon(new ImageIcon(TextureLoader.loadScaledPixel(Textures.LABEL_V2_TEXTURE, lbTitleTeam.getPreferredSize())));
+        lbTitleName.setIcon(new ImageIcon(
+                TextureLoader.loadScaledPixel(Textures.LABEL_V2_TEXTURE, lbTitleName.getPreferredSize())));
+        lbTitleTeam.setIcon(new ImageIcon(
+                TextureLoader.loadScaledPixel(Textures.LABEL_V2_TEXTURE, lbTitleTeam.getPreferredSize())));
 
     }
 
@@ -118,18 +124,18 @@ public class PanelOption extends CustPanel {
         this.gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(15, 15, 15, 15);
 
-        //columna 1
+        // columna 1
         this.gbc.gridx = 0;
 
-        //label titulo nombre
+        // label titulo nombre
         this.gbc.gridy = 1;
         container1.add(lbTitleName, this.gbc);
 
-        //Espacio de text Nombre
+        // Espacio de text Nombre
         this.gbc.gridy = 2;
         container1.add(txtName, this.gbc);
 
-        //boton empezar
+        // boton empezar
         gbc.insets = new Insets(50, 15, 15, 15);
         this.gbc.gridy = 3;
         this.gbc.gridheight = 3;
@@ -142,7 +148,7 @@ public class PanelOption extends CustPanel {
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(15, 15, 15, 15);
 
-        //label titulo grupo
+        // label titulo grupo
         this.gbc.gridwidth = 2;
         this.gbc.gridx = 0;
         this.gbc.gridy = 0;

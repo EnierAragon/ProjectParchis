@@ -33,7 +33,7 @@ public class PanelGame extends CustPanel {
     public PanelGame() {
         initComponets();
         confComponets();
-        this.setBackground(CustPalette.DARK_GRAY);
+        this.setBackground(CustPalette.GRAY);
         this.setVisible(true);
     }
 
@@ -56,7 +56,7 @@ public class PanelGame extends CustPanel {
         this.gbc.fill = GridBagConstraints.BOTH;
         this.gbc.weighty = 1;
 
-        //(896) 768 + 128{32*4}
+        // (896) 768 + 128{32*4}
         this.gbc.gridx = 0;
         this.gbc.weightx = 0;
         this.add(container, gbc);

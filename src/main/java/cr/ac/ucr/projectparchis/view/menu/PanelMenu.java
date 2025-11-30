@@ -45,7 +45,7 @@ public class PanelMenu extends CustPanel {
         initComponets();
         settingComponets();
         confComponets();
-        this.setBackground(CustPalette.DARK_GRAY);
+        this.setBackground(CustPalette.GRAY);
         this.setVisible(true);
     }
 

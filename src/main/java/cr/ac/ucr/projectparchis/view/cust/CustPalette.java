@@ -21,6 +21,21 @@ public final class CustPalette {
      */
     public static final Color DARK_GRAY = new Color(80, 80, 80);
 
+    /**
+     * Se usa en debug color 1
+     */
+    public static final Color MAGENTA = new Color(255, 0, 255);
+
+    /**
+     * Se usa en debug color 2
+     */
+    public static final Color RED = new Color(255, 0, 0);
+
+    /**
+     * Se usa en debug color 3
+     */
+    public static final Color BLUE = new Color(0, 0, 255);
+
     private CustPalette() {
     }
 

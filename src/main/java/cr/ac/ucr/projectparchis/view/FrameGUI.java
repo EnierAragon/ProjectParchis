@@ -4,10 +4,10 @@
  */
 package cr.ac.ucr.projectparchis.view;
 
+import cr.ac.ucr.projectparchis.view.cust.CustPalette;
 import cr.ac.ucr.projectparchis.view.cust.CustPanel;
 import cr.ac.ucr.projectparchis.view.menu.PanelMenu;
 import cr.ac.ucr.projectparchis.view.options.PanelMSG;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -38,13 +39,9 @@ public class FrameGUI extends JFrame {
 
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-//        this.setVisible(true);
         this.pack();
 
         laterInit();
-
-        //pruebas
-//        pop(panelOption);
     }
 
     public FrameGUI(PanelMenu panel) {
@@ -59,17 +56,14 @@ public class FrameGUI extends JFrame {
         pack();
 
         laterInit();
-
-        //pruebas
-//        pop(panelOption);
     }
 
     private void initParameters() {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.getContentPane().setLayout(new GridBagLayout());
         this.setResizable(false);
-        this.setBackground(Color.yellow);
-        this.setPreferredSize(new Dimension(1600, 900));
+        this.setBackground(CustPalette.MAGENTA);
+        this.setPreferredSize(new Dimension(1625, 935));
         this.setMinimumSize(new Dimension(850, 480));
         this.setMaximumSize(new Dimension(2560, 1440));
     }
@@ -95,16 +89,20 @@ public class FrameGUI extends JFrame {
 
     private void laterInit() {
         popFrameUtil = new JDialog(this, "", true);
-        popFrameUtil.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        popFrameUtil.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         popFrameUtil.setAlwaysOnTop(true);
         popFrameUtil.setLocationRelativeTo(this);
-        popFrameUtil.setSize(800, 400);
+        popFrameUtil.setResizable(true);
+        popFrameUtil.setBackground(CustPalette.DARK_GRAY);
+        popFrameUtil.setSize(825, 450);
 
         popFrameMSG = new JDialog(this, "", true);
-        popFrameMSG.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        popFrameMSG.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         popFrameMSG.setAlwaysOnTop(true);
         popFrameMSG.setLocationRelativeTo(this);
-        popFrameMSG.setSize(800, 400);
+        popFrameMSG.setResizable(false);
+        popFrameMSG.setBackground(CustPalette.DARK_GRAY);
+        popFrameMSG.setSize(825, 450);
 
     }
 
